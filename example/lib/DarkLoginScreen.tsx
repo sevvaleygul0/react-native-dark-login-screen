@@ -23,7 +23,7 @@ interface DarkLoginScreenProps {
     usernameChangeText: () => void,
     passwordChangeText: () => void,
     handleSignIn: () => void,
-    hanleGoogleLogIn: () => void
+    handleGoogleLogIn: () => void
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
@@ -47,7 +47,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         usernameChangeText,
         passwordChangeText,
         handleSignIn,
-        hanleGoogleLogIn
+        handleGoogleLogIn
     } = props;
     const renderHeaderTextContainer = () => (
         <View style={styles.headerContainer}>
@@ -93,7 +93,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.googleButtonStyle, googleButtonStyle]} onPress={hanleGoogleLogIn}>
+            <TouchableOpacity style={[styles.googleButtonStyle, googleButtonStyle]} onPress={handleGoogleLogIn}>
                 <Image source={require("./Logo/google.png")} style={styles.logoImageStyle} />
                 <Text style={[styles.googleButtonTextStyle, googleButtonTextStyle]}>{googleButtonText}</Text>
             </TouchableOpacity>
