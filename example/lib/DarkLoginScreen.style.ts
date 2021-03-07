@@ -12,6 +12,8 @@ interface Style {
   headerContainer: ViewStyle;
   titleTextStyle: TextStyle;
   descriptionTextStyle: TextStyle;
+  textInputContainer: ViewStyle;
+  usernameTextInputStyle: TextStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -31,5 +33,19 @@ export default StyleSheet.create<Style>({
   descriptionTextStyle: {
     fontSize: 16,
     color: '#696A6F',
+  },
+  textInputContainer: {
+    height: ScreenHeight * 0.2,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  usernameTextInputStyle: {
+    width: ScreenWidth * 0.85,
+    height: 75,
+    fontSize: 16,
+    paddingLeft: 32,
+    backgroundColor: '#262A34',
+    color: '#fff',
+    borderRadius: 24,
   },
 });
