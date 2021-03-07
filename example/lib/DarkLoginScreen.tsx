@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TextInput, TextStyle, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
 import styles from './DarkLoginScreen.style';
 
 
@@ -14,8 +14,12 @@ interface DarkLoginScreenProps {
     passwordPlaceholder: string,
     forgotPasswordText: string,
     forgotPasswordTextStyle: TextStyle,
+    signInButtonStyle: ViewStyle,
+    signInButtonText: string,
+    signInButtonTextStyle: TextStyle,
     usernameChangeText: () => void,
-    passwordChangeText: () => void
+    passwordChangeText: () => void,
+    handleSignIn: () => void
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
@@ -30,8 +34,12 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         passwordTextInputStyle,
         forgotPasswordText = "Forgot Password?",
         forgotPasswordTextStyle,
+        signInButtonStyle,
+        signInButtonText = "Sign In",
+        signInButtonTextStyle,
         usernameChangeText,
-        passwordChangeText
+        passwordChangeText,
+        handleSignIn
     } = props;
     const renderHeaderTextContainer = () => (
         <View style={styles.headerContainer}>
@@ -68,10 +76,22 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
             </TouchableOpacity>
         </View>
     )
+
+    const renderLoginButtonsContainer = () => (
+        <View style={styles.bottomButtonContainer}>
+            <TouchableOpacity style={[styles.signInButtonStyle, signInButtonStyle]} onPress={handleSignIn}>
+                <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
+                    {signInButtonText}
+                </Text>
+            </TouchableOpacity>
+        </View>
+    )
+
     return (
         <View style={styles.mainContainer}>
             {renderHeaderTextContainer()}
             {renderInputContainer()}
+            {renderLoginButtonsContainer()}
         </View>
     );
 };

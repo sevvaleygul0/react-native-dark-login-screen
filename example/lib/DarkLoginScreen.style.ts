@@ -16,6 +16,9 @@ interface Style {
   usernameTextInputStyle: TextStyle;
   forgotPasswordTextStyle: TextStyle;
   forgotButtonStyle: ViewStyle;
+  signInButtonStyle: ViewStyle;
+  bottomButtonContainer: ViewStyle;
+  signInButtonTextStyle: TextStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -32,9 +35,10 @@ export default StyleSheet.create<Style>({
   titleTextStyle: {
     fontSize: 24,
     color: '#fff',
+    fontWeight: '600',
   },
   descriptionTextStyle: {
-    fontSize: 16,
+    fontSize: 15,
     color: '#696A6F',
   },
   textInputContainer: {
@@ -57,5 +61,21 @@ export default StyleSheet.create<Style>({
     height: 30,
     justifyContent: 'center',
     marginLeft: 'auto',
+  },
+  signInButtonStyle: {
+    backgroundColor: '#5467FF',
+    width: ScreenWidth * 0.85,
+    height: 75,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bottomButtonContainer: {
+    position: 'absolute',
+    bottom: 32,
+  },
+  signInButtonTextStyle: {
+    color: '#fff',
+    fontWeight: '600',
   },
 });
