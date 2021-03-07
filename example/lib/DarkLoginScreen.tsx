@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TextInput, TextStyle, TouchableOpacity, ViewStyle } from 'react-native';
+import { Text, View, TextInput, TextStyle, TouchableOpacity, ViewStyle, Image } from 'react-native';
 import styles from './DarkLoginScreen.style';
 
 
@@ -17,9 +17,13 @@ interface DarkLoginScreenProps {
     signInButtonStyle: ViewStyle,
     signInButtonText: string,
     signInButtonTextStyle: TextStyle,
+    googleButtonStyle: ViewStyle,
+    googleButtonTextStyle: TextStyle,
+    googleButtonText: string,
     usernameChangeText: () => void,
     passwordChangeText: () => void,
-    handleSignIn: () => void
+    handleSignIn: () => void,
+    hanleGoogleLogIn: () => void
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
@@ -37,9 +41,13 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         signInButtonStyle,
         signInButtonText = "Sign In",
         signInButtonTextStyle,
+        googleButtonStyle,
+        googleButtonTextStyle,
+        googleButtonText = "Sign In With Google",
         usernameChangeText,
         passwordChangeText,
-        handleSignIn
+        handleSignIn,
+        hanleGoogleLogIn
     } = props;
     const renderHeaderTextContainer = () => (
         <View style={styles.headerContainer}>
@@ -83,6 +91,11 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
                 <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
                     {signInButtonText}
                 </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={[styles.googleButtonStyle, googleButtonStyle]} onPress={hanleGoogleLogIn}>
+                <Image source={require("./Logo/google.png")} style={styles.logoImageStyle} />
+                <Text style={[styles.googleButtonTextStyle, googleButtonTextStyle]}>{googleButtonText}</Text>
             </TouchableOpacity>
         </View>
     )

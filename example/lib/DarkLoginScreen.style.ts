@@ -19,6 +19,9 @@ interface Style {
   signInButtonStyle: ViewStyle;
   bottomButtonContainer: ViewStyle;
   signInButtonTextStyle: TextStyle;
+  logoImageStyle: ImageStyle;
+  googleButtonStyle: ViewStyle;
+  googleButtonTextStyle: TextStyle;
 }
 
 export default StyleSheet.create<Style>({
@@ -73,9 +76,32 @@ export default StyleSheet.create<Style>({
   bottomButtonContainer: {
     position: 'absolute',
     bottom: 32,
+    height: ScreenHeight * 0.2,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    // borderColor: '#fff',
+    // borderWidth: 1,
   },
   signInButtonTextStyle: {
     color: '#fff',
+    fontWeight: '600',
+  },
+  logoImageStyle: {
+    width: 32,
+    height: 32,
+    marginRight: 16,
+  },
+  googleButtonStyle: {
+    backgroundColor: '#FFFFFF',
+    width: ScreenWidth * 0.85,
+    height: 75,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  googleButtonTextStyle: {
+    color: '#181A1F',
     fontWeight: '600',
   },
 });
