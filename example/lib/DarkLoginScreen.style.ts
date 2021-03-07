@@ -14,11 +14,14 @@ interface Style {
   descriptionTextStyle: TextStyle;
   textInputContainer: ViewStyle;
   usernameTextInputStyle: TextStyle;
+  forgotPasswordTextStyle: TextStyle;
+  forgotButtonStyle: ViewStyle;
 }
 
 export default StyleSheet.create<Style>({
   mainContainer: {
     backgroundColor: '#181A1F',
+    alignItems: 'center',
     flex: 1,
   },
   headerContainer: {
@@ -35,17 +38,24 @@ export default StyleSheet.create<Style>({
     color: '#696A6F',
   },
   textInputContainer: {
-    height: ScreenHeight * 0.2,
+    height: ScreenHeight * 0.25,
     justifyContent: 'space-around',
-    alignItems: 'center',
+    width: ScreenWidth * 0.85,
   },
   usernameTextInputStyle: {
-    width: ScreenWidth * 0.85,
     height: 75,
     fontSize: 16,
     paddingLeft: 32,
     backgroundColor: '#262A34',
     color: '#fff',
     borderRadius: 24,
+  },
+  forgotPasswordTextStyle: {
+    color: '#6C6D72',
+  },
+  forgotButtonStyle: {
+    height: 30,
+    justifyContent: 'center',
+    marginLeft: 'auto',
   },
 });

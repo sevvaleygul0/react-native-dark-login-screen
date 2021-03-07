@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TextInput, TextStyle } from 'react-native';
+import { Text, View, TextInput, TextStyle, TouchableOpacity } from 'react-native';
 import styles from './DarkLoginScreen.style';
 
 
@@ -8,11 +8,12 @@ interface DarkLoginScreenProps {
     titleTextStyle: TextStyle,
     descriptionTextStyle: TextStyle,
     usernamePlaceholder: string,
-
     usernameTextInputStyle: TextStyle,
     placeholderTextColor: string,
     passwordTextInputStyle: TextStyle,
     passwordPlaceholder: string,
+    forgotPasswordText: string,
+    forgotPasswordTextStyle: TextStyle,
     usernameChangeText: () => void,
     passwordChangeText: () => void
 }
@@ -27,6 +28,8 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         placeholderTextColor = '#6C6D72',
         passwordPlaceholder = "Password",
         passwordTextInputStyle,
+        forgotPasswordText = "Forgot Password?",
+        forgotPasswordTextStyle,
         usernameChangeText,
         passwordChangeText
     } = props;
@@ -58,6 +61,11 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
                 style={[styles.usernameTextInputStyle, passwordTextInputStyle]}
                 secureTextEntry
                 onChangeText={passwordChangeText} />
+            <TouchableOpacity style={styles.forgotButtonStyle}>
+                <Text style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}>
+                    {forgotPasswordText}
+                </Text>
+            </TouchableOpacity>
         </View>
     )
     return (
