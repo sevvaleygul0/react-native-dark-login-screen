@@ -17,12 +17,23 @@ interface Style {
   forgotPasswordTextStyle: TextStyle;
   forgotButtonStyle: ViewStyle;
   signInButtonStyle: ViewStyle;
-  bottomButtonContainer: ViewStyle;
   signInButtonTextStyle: TextStyle;
   logoImageStyle: ImageStyle;
   googleButtonStyle: ViewStyle;
   googleButtonTextStyle: TextStyle;
+  facebookButtonStyle: ViewStyle;
+  facebookButtonTextStyle: TextStyle;
 }
+
+export const _bottomButtonContainer = (height): ViewStyle => ({
+  position: 'absolute',
+  bottom: 32,
+  height,
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  // borderColor: '#fff',
+  // borderWidth: 1,
+});
 
 export default StyleSheet.create<Style>({
   mainContainer: {
@@ -73,15 +84,6 @@ export default StyleSheet.create<Style>({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  bottomButtonContainer: {
-    position: 'absolute',
-    bottom: 32,
-    height: ScreenHeight * 0.2,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    // borderColor: '#fff',
-    // borderWidth: 1,
-  },
   signInButtonTextStyle: {
     color: '#fff',
     fontWeight: '600',
@@ -89,7 +91,7 @@ export default StyleSheet.create<Style>({
   logoImageStyle: {
     width: 32,
     height: 32,
-    marginRight: 16,
+    marginRight: 12,
   },
   googleButtonStyle: {
     backgroundColor: '#FFFFFF',
@@ -102,6 +104,19 @@ export default StyleSheet.create<Style>({
   },
   googleButtonTextStyle: {
     color: '#181A1F',
+    fontWeight: '600',
+  },
+  facebookButtonStyle: {
+    backgroundColor: '#3A579B',
+    width: ScreenWidth * 0.85,
+    height: 75,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  facebookButtonTextStyle: {
+    color: '#FFF',
     fontWeight: '600',
   },
 });

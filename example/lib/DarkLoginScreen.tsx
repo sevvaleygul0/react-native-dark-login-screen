@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Text, View, TextInput, TextStyle, TouchableOpacity, ViewStyle, Image } from 'react-native';
-import styles from './DarkLoginScreen.style';
+import { Text, View, TextInput, TextStyle, TouchableOpacity, ViewStyle, Image, Dimensions } from 'react-native';
+const { height: ScreenHeight } = Dimensions.get('window');
+import styles, { _bottomButtonContainer } from './DarkLoginScreen.style';
 
 
 interface DarkLoginScreenProps {
     titleText: string,
     titleTextStyle: TextStyle,
+    descriptionText: string,
     descriptionTextStyle: TextStyle,
     usernamePlaceholder: string,
     usernameTextInputStyle: TextStyle,
@@ -20,16 +22,23 @@ interface DarkLoginScreenProps {
     googleButtonStyle: ViewStyle,
     googleButtonTextStyle: TextStyle,
     googleButtonText: string,
+    facebookButtonStyle: ViewStyle,
+    facebookButtonTextStyle: TextStyle,
+    facebookButtonText: string,
+    enableGoogleLogin: boolean,
+    enableFacebookLogin: boolean,
     usernameChangeText: () => void,
     passwordChangeText: () => void,
     handleSignIn: () => void,
-    handleGoogleLogIn: () => void
+    handleGoogleLogIn: () => void,
+    handleFacebookLogIn: () => void
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
     const {
         titleText = "Welcome Back!",
         titleTextStyle,
+        descriptionText = "Please sign in to your account",
         descriptionTextStyle,
         usernamePlaceholder = "Username",
         usernameTextInputStyle,
@@ -44,10 +53,16 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         googleButtonStyle,
         googleButtonTextStyle,
         googleButtonText = "Sign In With Google",
+        facebookButtonStyle,
+        facebookButtonTextStyle,
+        facebookButtonText = "Sign In With Facebook",
+        enableGoogleLogin = true,
+        enableFacebookLogin = true,
         usernameChangeText,
         passwordChangeText,
         handleSignIn,
-        handleGoogleLogIn
+        handleGoogleLogIn,
+        handleFacebookLogIn
     } = props;
     const renderHeaderTextContainer = () => (
         <View style={styles.headerContainer}>
@@ -56,8 +71,8 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
             </Text>
             <View style={{ marginTop: 16 }}>
                 <Text style={[styles.descriptionTextStyle, descriptionTextStyle]}>
-                    Please sign in to your account
-            </Text>
+                    {descriptionText}
+                </Text>
             </View>
         </View>
     )
@@ -85,20 +100,31 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         </View>
     )
 
-    const renderLoginButtonsContainer = () => (
-        <View style={styles.bottomButtonContainer}>
-            <TouchableOpacity style={[styles.signInButtonStyle, signInButtonStyle]} onPress={handleSignIn}>
-                <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
-                    {signInButtonText}
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={[styles.googleButtonStyle, googleButtonStyle]} onPress={handleGoogleLogIn}>
-                <Image source={require("./Logo/google.png")} style={styles.logoImageStyle} />
-                <Text style={[styles.googleButtonTextStyle, googleButtonTextStyle]}>{googleButtonText}</Text>
-            </TouchableOpacity>
-        </View>
-    )
+    const renderLoginButtonsContainer = () => {
+        let height = ScreenHeight * 0.2
+        if (enableFacebookLogin && enableGoogleLogin) height = ScreenHeight * 0.3
+        return (
+            <View style={_bottomButtonContainer(height)}>
+                <TouchableOpacity style={[styles.signInButtonStyle, signInButtonStyle]} onPress={handleSignIn}>
+                    <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
+                        {signInButtonText}
+                    </Text>
+                </TouchableOpacity>
+                {enableGoogleLogin && (
+                    <TouchableOpacity style={[styles.googleButtonStyle, googleButtonStyle]} onPress={handleGoogleLogIn}>
+                        <Image source={require("./Logo/google.png")} style={styles.logoImageStyle} />
+                        <Text style={[styles.googleButtonTextStyle, googleButtonTextStyle]}>{googleButtonText}</Text>
+                    </TouchableOpacity>
+                )}
+                {enableFacebookLogin && (
+                    <TouchableOpacity style={[styles.facebookButtonStyle, facebookButtonStyle]} onPress={handleFacebookLogIn}>
+                        <Image source={require("./Logo/facebook.png")} style={styles.logoImageStyle} />
+                        <Text style={[styles.facebookButtonTextStyle, facebookButtonTextStyle]}>{facebookButtonText}</Text>
+                    </TouchableOpacity>
+                )}
+            </View>
+        )
+    }
 
     return (
         <View style={styles.mainContainer}>
