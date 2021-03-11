@@ -23,16 +23,18 @@ interface Style {
   googleButtonTextStyle: TextStyle;
   facebookButtonStyle: ViewStyle;
   facebookButtonTextStyle: TextStyle;
+  signUpButtonContainer: ViewStyle;
+  signUpButtonStyle: ViewStyle;
+  signUpTextStyle: TextStyle;
+  signUpButtonTextStyle: TextStyle;
 }
 
 export const _bottomButtonContainer = (height): ViewStyle => ({
   position: 'absolute',
-  bottom: 32,
+  bottom: 80,
   height,
   alignItems: 'center',
   justifyContent: 'space-around',
-  // borderColor: '#fff',
-  // borderWidth: 1,
 });
 
 export default StyleSheet.create<Style>({
@@ -118,5 +120,26 @@ export default StyleSheet.create<Style>({
   facebookButtonTextStyle: {
     color: '#FFF',
     fontWeight: '600',
+  },
+  signUpButtonContainer: {
+    position: 'absolute',
+    bottom: 32,
+    width: ScreenWidth * 0.9,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  signUpButtonStyle: {
+    height: 40,
+    justifyContent: 'center',
+    marginLeft: 8,
+  },
+  signUpTextStyle: {
+    fontSize: 14,
+    color: '#fff',
+  },
+  signUpButtonTextStyle: {
+    fontSize: 14,
+    color: '#4251BC',
   },
 });

@@ -27,6 +27,10 @@ interface DarkLoginScreenProps {
     facebookButtonText: string,
     enableGoogleLogin: boolean,
     enableFacebookLogin: boolean,
+    signUpQuestionText: string,
+    signUpButtonText: string,
+    signUpTextStyle: TextStyle,
+    signUpButtonTextStyle: TextStyle,
     usernameChangeText: () => void,
     passwordChangeText: () => void,
     handleSignIn: () => void,
@@ -58,6 +62,10 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         facebookButtonText = "Sign In With Facebook",
         enableGoogleLogin = true,
         enableFacebookLogin = true,
+        signUpQuestionText = "Don't Have An Account ?",
+        signUpButtonText = "Sign Up",
+        signUpTextStyle,
+        signUpButtonTextStyle,
         usernameChangeText,
         passwordChangeText,
         handleSignIn,
@@ -126,11 +134,21 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         )
     }
 
+    const renderSignUpButtonContainer = () => (
+        <View style={styles.signUpButtonContainer}>
+            <Text style={[styles.signUpTextStyle, signUpTextStyle]}>{signUpQuestionText}</Text>
+            <TouchableOpacity style={styles.signUpButtonStyle}>
+                <Text style={[styles.signUpButtonTextStyle, signUpButtonTextStyle]}>{signUpButtonText}</Text>
+            </TouchableOpacity>
+        </View>
+    )
+
     return (
         <View style={styles.mainContainer}>
             {renderHeaderTextContainer()}
             {renderInputContainer()}
             {renderLoginButtonsContainer()}
+            {renderSignUpButtonContainer()}
         </View>
     );
 };
