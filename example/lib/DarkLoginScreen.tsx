@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Text, View, TextInput, TextStyle, TouchableOpacity, ViewStyle, Image, Dimensions } from 'react-native';
 const { height: ScreenHeight } = Dimensions.get('window');
 import styles, { _bottomButtonContainer } from './DarkLoginScreen.style';
+import SignUpScreen from './screens/SignUpScreen';
+
 
 
 interface DarkLoginScreenProps {
@@ -10,7 +12,7 @@ interface DarkLoginScreenProps {
     descriptionText: string,
     descriptionTextStyle: TextStyle,
     usernamePlaceholder: string,
-    usernameTextInputStyle: TextStyle,
+    textInputStyle: TextStyle,
     placeholderTextColor: string,
     passwordTextInputStyle: TextStyle,
     passwordPlaceholder: string,
@@ -45,7 +47,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         descriptionText = "Please sign in to your account",
         descriptionTextStyle,
         usernamePlaceholder = "Username",
-        usernameTextInputStyle,
+        textInputStyle,
         placeholderTextColor = '#6C6D72',
         passwordPlaceholder = "Password",
         passwordTextInputStyle,
@@ -72,6 +74,9 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         handleGoogleLogIn,
         handleFacebookLogIn
     } = props;
+
+    const [newAccount, setNewAccount] = React.useState<boolean | undefined>(false);
+
     const renderHeaderTextContainer = () => (
         <View style={styles.headerContainer}>
             <Text style={[styles.titleTextStyle, titleTextStyle]}>
@@ -91,13 +96,13 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
                 {...props}
                 placeholder={usernamePlaceholder}
                 placeholderTextColor={placeholderTextColor}
-                style={[styles.usernameTextInputStyle, usernameTextInputStyle]}
+                style={[styles.textInputStyle, textInputStyle]}
                 onChangeText={usernameChangeText} />
             <TextInput
                 {...props}
                 placeholder={passwordPlaceholder}
                 placeholderTextColor={placeholderTextColor}
-                style={[styles.usernameTextInputStyle, passwordTextInputStyle]}
+                style={[styles.textInputStyle, passwordTextInputStyle]}
                 secureTextEntry
                 onChangeText={passwordChangeText} />
             <TouchableOpacity style={styles.forgotButtonStyle}>
@@ -137,19 +142,34 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
     const renderSignUpButtonContainer = () => (
         <View style={styles.signUpButtonContainer}>
             <Text style={[styles.signUpTextStyle, signUpTextStyle]}>{signUpQuestionText}</Text>
-            <TouchableOpacity style={styles.signUpButtonStyle}>
+            <TouchableOpacity style={styles.signUpButtonStyle} onPress={() => setNewAccount(true)}>
                 <Text style={[styles.signUpButtonTextStyle, signUpButtonTextStyle]}>{signUpButtonText}</Text>
             </TouchableOpacity>
         </View>
     )
 
+    const renderScreenChange = () => {
+        if (!newAccount) {
+            return (
+                <View style={{ flex: 1 }}>
+                    {renderHeaderTextContainer()}
+                    {renderInputContainer()}
+                    {renderLoginButtonsContainer()}
+                    {renderSignUpButtonContainer()}
+                </View>
+            )
+        }
+        else {
+            return (
+                <View style={{ flex: 1 }}>
+                    <SignUpScreen />
+                </View>
+            )
+        }
+    }
+
     return (
-        <View style={styles.mainContainer}>
-            {renderHeaderTextContainer()}
-            {renderInputContainer()}
-            {renderLoginButtonsContainer()}
-            {renderSignUpButtonContainer()}
-        </View>
+        <View style={styles.mainContainer}>{renderScreenChange()}</View>
     );
 };
 

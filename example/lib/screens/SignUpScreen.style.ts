@@ -14,19 +14,10 @@ interface Style {
   descriptionTextStyle: TextStyle;
   textInputContainer: ViewStyle;
   textInputStyle: TextStyle;
-  forgotPasswordTextStyle: TextStyle;
-  forgotButtonStyle: ViewStyle;
-  signInButtonStyle: ViewStyle;
-  signInButtonTextStyle: TextStyle;
-  logoImageStyle: ImageStyle;
-  googleButtonStyle: ViewStyle;
-  googleButtonTextStyle: TextStyle;
-  facebookButtonStyle: ViewStyle;
-  facebookButtonTextStyle: TextStyle;
   signUpButtonContainer: ViewStyle;
   signUpButtonStyle: ViewStyle;
-  signUpTextStyle: TextStyle;
   signUpButtonTextStyle: TextStyle;
+  buttonContainer: ViewStyle;
 }
 
 export const _bottomButtonContainer = (height): ViewStyle => ({
@@ -58,7 +49,7 @@ export default StyleSheet.create<Style>({
     color: '#696A6F',
   },
   textInputContainer: {
-    height: ScreenHeight * 0.25,
+    height: ScreenHeight * 0.3,
     justifyContent: 'space-around',
     width: ScreenWidth * 0.85,
   },
@@ -70,57 +61,6 @@ export default StyleSheet.create<Style>({
     color: '#fff',
     borderRadius: 24,
   },
-  forgotPasswordTextStyle: {
-    color: '#6C6D72',
-  },
-  forgotButtonStyle: {
-    height: 30,
-    justifyContent: 'center',
-    marginLeft: 'auto',
-  },
-  signInButtonStyle: {
-    backgroundColor: '#5467FF',
-    width: ScreenWidth * 0.85,
-    height: 75,
-    borderRadius: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  signInButtonTextStyle: {
-    color: '#fff',
-    fontWeight: '600',
-  },
-  logoImageStyle: {
-    width: 32,
-    height: 32,
-    marginRight: 12,
-  },
-  googleButtonStyle: {
-    backgroundColor: '#FFFFFF',
-    width: ScreenWidth * 0.85,
-    height: 75,
-    borderRadius: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  googleButtonTextStyle: {
-    color: '#181A1F',
-    fontWeight: '600',
-  },
-  facebookButtonStyle: {
-    backgroundColor: '#3A579B',
-    width: ScreenWidth * 0.85,
-    height: 75,
-    borderRadius: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  facebookButtonTextStyle: {
-    color: '#FFF',
-    fontWeight: '600',
-  },
   signUpButtonContainer: {
     position: 'absolute',
     bottom: 32,
@@ -130,16 +70,23 @@ export default StyleSheet.create<Style>({
     flexDirection: 'row',
   },
   signUpButtonStyle: {
-    height: 40,
+    backgroundColor: '#5467FF',
+    width: ScreenWidth * 0.85,
+    height: 75,
+    borderRadius: 24,
     justifyContent: 'center',
-    marginLeft: 8,
-  },
-  signUpTextStyle: {
-    fontSize: 14,
-    color: '#fff',
+    alignItems: 'center',
   },
   signUpButtonTextStyle: {
     fontSize: 14,
-    color: '#4251BC',
+    color: '#fff',
+    fontWeight: '600',
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 80,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
 });
