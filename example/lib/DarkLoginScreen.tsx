@@ -162,7 +162,10 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         else {
             return (
                 <View style={{ flex: 1 }}>
-                    <SignUpScreen />
+                    <SignUpScreen
+                        {...props}
+                        handleSignIn={() => setNewAccount(false)}
+                    />
                 </View>
             )
         }

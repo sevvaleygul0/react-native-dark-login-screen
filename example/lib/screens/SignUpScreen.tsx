@@ -18,10 +18,15 @@ interface SignUpScreenProps {
     signUpButtonText?: string,
     signUpButtonStyle?: ViewStyle,
     signUpButtonTextStyle?: TextStyle,
+    signInQuestionTextStyle?: TextStyle,
+    signInQuestionText: string,
+    signInButtonTextStyle?: TextStyle,
+    signInButtonText?: string,
     fullNameOnChange: () => void,
     emailOnChange: () => void,
     singUpPasswordChangeText: () => void,
-    handleSignUp: () => void
+    handleSignUp: () => void,
+    handleSignIn: () => void
 }
 
 const SignUpScreen = (props: SignUpScreenProps) => {
@@ -39,10 +44,15 @@ const SignUpScreen = (props: SignUpScreenProps) => {
         signUpButtonText = "Sign Up",
         signUpButtonStyle,
         signUpButtonTextStyle,
+        signInQuestionTextStyle,
+        signInQuestionText = "Have An Account?",
+        signInButtonTextStyle,
+        signInButtonText = "Sign In",
         fullNameOnChange,
         emailOnChange,
         singUpPasswordChangeText,
-        handleSignUp
+        handleSignUp,
+        handleSignIn
     } = props;
 
 
@@ -93,11 +103,21 @@ const SignUpScreen = (props: SignUpScreenProps) => {
         </View>
     )
 
+    const renderSignInTextContainer = () => (
+        <View style={styles.signInButtonContainer}>
+            <Text style={[styles.signInQuestionTextStyle, signInQuestionTextStyle]}>{signInQuestionText}</Text>
+            <TouchableOpacity style={styles.signInButtonStyle} onPress={() => handleSignIn()}>
+                <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>{signInButtonText}</Text>
+            </TouchableOpacity>
+        </View>
+    )
+
     return (
         <View style={styles.mainContainer}>
             {renderHeaderTextContainer()}
             {renderTextInputContainer()}
             {renderSignUpButton()}
+            {renderSignInTextContainer()}
         </View>
     );
 };

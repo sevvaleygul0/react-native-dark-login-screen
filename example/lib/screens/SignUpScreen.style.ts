@@ -18,15 +18,11 @@ interface Style {
   signUpButtonStyle: ViewStyle;
   signUpButtonTextStyle: TextStyle;
   buttonContainer: ViewStyle;
+  signInQuestionTextStyle: TextStyle;
+  signInButtonStyle: ViewStyle;
+  signInButtonTextStyle: TextStyle;
+  signInButtonContainer: ViewStyle;
 }
-
-export const _bottomButtonContainer = (height): ViewStyle => ({
-  position: 'absolute',
-  bottom: 80,
-  height,
-  alignItems: 'center',
-  justifyContent: 'space-around',
-});
 
 export default StyleSheet.create<Style>({
   mainContainer: {
@@ -63,7 +59,7 @@ export default StyleSheet.create<Style>({
   },
   signUpButtonContainer: {
     position: 'absolute',
-    bottom: 32,
+    bottom: 88,
     width: ScreenWidth * 0.9,
     justifyContent: 'center',
     alignItems: 'center',
@@ -88,5 +84,26 @@ export default StyleSheet.create<Style>({
     height: 100,
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  signInQuestionTextStyle: {
+    fontSize: 14,
+    color: '#fff',
+  },
+  signInButtonStyle: {
+    height: 40,
+    justifyContent: 'center',
+    marginLeft: 8,
+  },
+  signInButtonTextStyle: {
+    fontSize: 14,
+    color: '#4251BC',
+  },
+  signInButtonContainer: {
+    position: 'absolute',
+    bottom: 32,
+    width: ScreenWidth * 0.9,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 });
