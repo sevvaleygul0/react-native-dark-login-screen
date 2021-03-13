@@ -33,11 +33,19 @@ interface DarkLoginScreenProps {
     signUpButtonText: string,
     signUpTextStyle: TextStyle,
     signUpButtonTextStyle: TextStyle,
-    usernameChangeText: () => void,
-    passwordChangeText: () => void,
-    handleSignIn: () => void,
+    signInQuestionText: string,
+    signInQuestionTextStyle: TextStyle,
+    usernameChangeText: (username: string) => void,
+    passwordChangeText: (password: string) => void,
+    handleSignInButton: () => void,
     handleGoogleLogIn: () => void,
-    handleFacebookLogIn: () => void
+    handleFacebookLogIn: () => void,
+    handleForgotPassword: () => void,
+    fullNameOnChange: (fullName: string) => void,
+    singUpPasswordChangeText: (password: string) => void,
+    emailOnChange: (email: string) => void,
+    handleSignUp: () => void,
+    handleSignUpButton: () => void
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
@@ -70,9 +78,11 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         signUpButtonTextStyle,
         usernameChangeText,
         passwordChangeText,
-        handleSignIn,
+        handleSignInButton,
         handleGoogleLogIn,
-        handleFacebookLogIn
+        handleFacebookLogIn,
+        handleForgotPassword,
+        handleSignUp
     } = props;
 
     const [newAccount, setNewAccount] = React.useState<boolean | undefined>(false);
@@ -105,7 +115,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
                 style={[styles.textInputStyle, passwordTextInputStyle]}
                 secureTextEntry
                 onChangeText={passwordChangeText} />
-            <TouchableOpacity style={styles.forgotButtonStyle}>
+            <TouchableOpacity style={styles.forgotButtonStyle} onPress={handleForgotPassword}>
                 <Text style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}>
                     {forgotPasswordText}
                 </Text>
@@ -118,7 +128,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         if (enableFacebookLogin && enableGoogleLogin) height = ScreenHeight * 0.3
         return (
             <View style={_bottomButtonContainer(height)}>
-                <TouchableOpacity style={[styles.signInButtonStyle, signInButtonStyle]} onPress={handleSignIn}>
+                <TouchableOpacity style={[styles.signInButtonStyle, signInButtonStyle]} onPress={handleSignInButton}>
                     <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
                         {signInButtonText}
                     </Text>
@@ -142,7 +152,10 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
     const renderSignUpButtonContainer = () => (
         <View style={styles.signUpButtonContainer}>
             <Text style={[styles.signUpTextStyle, signUpTextStyle]}>{signUpQuestionText}</Text>
-            <TouchableOpacity style={styles.signUpButtonStyle} onPress={() => setNewAccount(true)}>
+            <TouchableOpacity style={styles.signUpButtonStyle} onPress={() => {
+                handleSignUp && handleSignUp();
+                setNewAccount(true);
+            }}>
                 <Text style={[styles.signUpButtonTextStyle, signUpButtonTextStyle]}>{signUpButtonText}</Text>
             </TouchableOpacity>
         </View>

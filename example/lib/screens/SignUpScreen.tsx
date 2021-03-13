@@ -22,10 +22,10 @@ interface SignUpScreenProps {
     signInQuestionText: string,
     signInButtonTextStyle?: TextStyle,
     signInButtonText?: string,
-    fullNameOnChange: () => void,
-    emailOnChange: () => void,
-    singUpPasswordChangeText: () => void,
-    handleSignUp: () => void,
+    fullNameOnChange: (fullName: string) => void,
+    emailOnChange: (email: string) => void,
+    singUpPasswordChangeText: (password: string) => void,
+    handleSignUpButton: () => void,
     handleSignIn: () => void
 }
 
@@ -51,7 +51,7 @@ const SignUpScreen = (props: SignUpScreenProps) => {
         fullNameOnChange,
         emailOnChange,
         singUpPasswordChangeText,
-        handleSignUp,
+        handleSignUpButton,
         handleSignIn
     } = props;
 
@@ -95,7 +95,7 @@ const SignUpScreen = (props: SignUpScreenProps) => {
 
     const renderSignUpButton = () => (
         <View style={styles.signUpButtonContainer}>
-            <TouchableOpacity style={[styles.signUpButtonStyle, signUpButtonStyle]} onPress={handleSignUp}>
+            <TouchableOpacity style={[styles.signUpButtonStyle, signUpButtonStyle]} onPress={handleSignUpButton}>
                 <Text style={[styles.signUpButtonTextStyle, signUpButtonTextStyle]}>
                     {signUpButtonText}
                 </Text>
@@ -106,7 +106,7 @@ const SignUpScreen = (props: SignUpScreenProps) => {
     const renderSignInTextContainer = () => (
         <View style={styles.signInButtonContainer}>
             <Text style={[styles.signInQuestionTextStyle, signInQuestionTextStyle]}>{signInQuestionText}</Text>
-            <TouchableOpacity style={styles.signInButtonStyle} onPress={() => handleSignIn()}>
+            <TouchableOpacity style={styles.signInButtonStyle} onPress={() => handleSignIn && handleSignIn()}>
                 <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>{signInButtonText}</Text>
             </TouchableOpacity>
         </View>

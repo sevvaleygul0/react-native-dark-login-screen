@@ -8,7 +8,10 @@ import DarkLoginScreen from './lib/DarkLoginScreen';
 const App = () => {
 
   return (
-    <DarkLoginScreen />
+    <DarkLoginScreen
+      handleSignUpButton={() => console.log("sign up")}
+      fullNameOnChange={(value: string) => console.log("HERE", value)}
+    />
   );
 };
 
