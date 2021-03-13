@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, View, Image, Text, StatusBar } from 'react-native';
 
-import DarkLoginScreen from './lib/DarkLoginScreen';
+import DarkLoginScreen from 'react-native-dark-login-screen';
 
 
 
