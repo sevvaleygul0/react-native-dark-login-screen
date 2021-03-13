@@ -2,10 +2,28 @@
 
 [![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/sevvaleygul0/react-native-dark-login-screen)
 
-<p align="center">
-  <img alt="React Native Typescript Library Starter"
-        src="assets/Screenshots/typescript.jpg" />
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <img alt="React Native Social Login Screen"
+          src="assets/Screenshots/dark-login-screen-2.png" />
+    </td>
+    <td align="center">
+      <img alt="React Native Social Login Screen"
+              src="assets/Screenshots/dark-login-screen.png" />
+    </td>
+   </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center">
+      <img alt="React Native Social Login Screen"
+          src="assets/Screenshots/dark-login-screen.gif" />
+    </td>
+   
+   </tr>
+</table>
 
 # Installation
 
