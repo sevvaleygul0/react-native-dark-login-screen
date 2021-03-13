@@ -4,8 +4,8 @@ import {
   TextStyle,
   StyleSheet,
   Dimensions,
-} from "react-native";
-const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
+} from 'react-native';
+const {width: ScreenWidth, height: ScreenHeight} = Dimensions.get('window');
 
 interface Style {
   mainContainer: ViewStyle;
@@ -26,84 +26,84 @@ interface Style {
 
 export default StyleSheet.create<Style>({
   mainContainer: {
-    backgroundColor: "#181A1F",
-    alignItems: "center",
+    backgroundColor: '#181A1F',
+    alignItems: 'center',
     flex: 1,
   },
   headerContainer: {
     height: ScreenHeight * 0.28,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   titleTextStyle: {
     fontSize: 24,
-    color: "#fff",
-    fontWeight: "600",
+    color: '#fff',
+    fontWeight: '600',
   },
   descriptionTextStyle: {
     fontSize: 15,
-    color: "#696A6F",
+    color: '#696A6F',
   },
   textInputContainer: {
     height: ScreenHeight * 0.3,
-    justifyContent: "space-around",
+    justifyContent: 'space-around',
     width: ScreenWidth * 0.85,
   },
   textInputStyle: {
     height: 75,
     fontSize: 16,
     paddingLeft: 32,
-    backgroundColor: "#262A34",
-    color: "#fff",
+    backgroundColor: '#262A34',
+    color: '#fff',
     borderRadius: 24,
   },
   signUpButtonContainer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 88,
     width: ScreenWidth * 0.9,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   signUpButtonStyle: {
-    backgroundColor: "#5467FF",
+    backgroundColor: '#5467FF',
     width: ScreenWidth * 0.85,
     height: 75,
     borderRadius: 24,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   signUpButtonTextStyle: {
     fontSize: 14,
-    color: "#fff",
-    fontWeight: "600",
+    color: '#fff',
+    fontWeight: '600',
   },
   buttonContainer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 80,
     height: 100,
-    alignItems: "center",
-    justifyContent: "space-around",
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
   signInQuestionTextStyle: {
     fontSize: 14,
-    color: "#fff",
+    color: '#fff',
   },
   signInButtonStyle: {
     height: 40,
-    justifyContent: "center",
+    justifyContent: 'center',
     marginLeft: 8,
   },
   signInButtonTextStyle: {
     fontSize: 14,
-    color: "#4251BC",
+    color: '#4251BC',
   },
   signInButtonContainer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 32,
     width: ScreenWidth * 0.9,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
 });
