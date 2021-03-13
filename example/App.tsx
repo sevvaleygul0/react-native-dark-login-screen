@@ -10,7 +10,7 @@ const App = () => {
   return (
     <DarkLoginScreen
       handleSignUpButton={() => console.log("sign up")}
-      fullNameOnChange={(value: string) => console.log("HERE", value)}
+      fullNameOnChange={(value: string) => console.log("full name", value)}
     />
   );
 };
