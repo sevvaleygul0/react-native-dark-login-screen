@@ -19,14 +19,14 @@ interface SignUpScreenProps {
     signUpButtonStyle?: ViewStyle,
     signUpButtonTextStyle?: TextStyle,
     signInQuestionTextStyle?: TextStyle,
-    signInQuestionText: string,
+    signInQuestionText?: string,
     signInButtonTextStyle?: TextStyle,
     signInButtonText?: string,
-    fullNameOnChange: (fullName: string) => void,
-    emailOnChange: (email: string) => void,
-    singUpPasswordChangeText: (password: string) => void,
-    handleSignUpButton: () => void,
-    handleSignIn: () => void
+    fullNameOnChange?: (fullName: string) => void,
+    emailOnChange?: (email: string) => void,
+    singUpPasswordChangeText?: (password: string) => void,
+    handleSignUpButton?: () => void,
+    handleSignIn?: () => void
 }
 
 const SignUpScreen = (props: SignUpScreenProps) => {
