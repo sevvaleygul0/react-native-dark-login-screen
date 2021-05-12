@@ -1,4 +1,8 @@
 import {
+  isAndroid,
+  isIPhoneNotchFamily,
+} from '@freakycoder/react-native-helpers';
+import {
   ViewStyle,
   ImageStyle,
   TextStyle,
@@ -31,7 +35,7 @@ export default StyleSheet.create<Style>({
     flex: 1,
   },
   headerContainer: {
-    height: ScreenHeight * 0.28,
+    height: ScreenHeight * 0.3,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -45,21 +49,19 @@ export default StyleSheet.create<Style>({
     color: '#696A6F',
   },
   textInputContainer: {
-    height: ScreenHeight * 0.3,
-    justifyContent: 'space-around',
     width: ScreenWidth * 0.85,
   },
   textInputStyle: {
-    height: 75,
+    height: isIPhoneNotchFamily() ? 70 : 60,
+    marginBottom: 8,
     fontSize: 16,
     paddingLeft: 32,
     backgroundColor: '#262A34',
     color: '#fff',
-    borderRadius: 24,
+    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
   },
   signUpButtonContainer: {
-    position: 'absolute',
-    bottom: 88,
+    marginTop: isAndroid ? ScreenHeight * 0.25 : ScreenHeight * 0.22,
     width: ScreenWidth * 0.9,
     justifyContent: 'center',
     alignItems: 'center',
@@ -68,8 +70,8 @@ export default StyleSheet.create<Style>({
   signUpButtonStyle: {
     backgroundColor: '#5467FF',
     width: ScreenWidth * 0.85,
-    height: 75,
-    borderRadius: 24,
+    height: isIPhoneNotchFamily() ? 70 : 60,
+    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -80,7 +82,7 @@ export default StyleSheet.create<Style>({
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: 80,
+    bottom: 70,
     height: 100,
     alignItems: 'center',
     justifyContent: 'space-around',
@@ -99,8 +101,7 @@ export default StyleSheet.create<Style>({
     color: '#4251BC',
   },
   signInButtonContainer: {
-    position: 'absolute',
-    bottom: 32,
+    marginTop: 8,
     width: ScreenWidth * 0.9,
     justifyContent: 'center',
     alignItems: 'center',

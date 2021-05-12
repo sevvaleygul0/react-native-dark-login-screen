@@ -5,6 +5,10 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
+import {
+  isAndroid,
+  isIPhoneNotchFamily,
+} from '@freakycoder/react-native-helpers';
 const {width: ScreenWidth, height: ScreenHeight} = Dimensions.get('window');
 
 interface Style {
@@ -29,12 +33,19 @@ interface Style {
   signUpButtonTextStyle: TextStyle;
 }
 
-export const _bottomButtonContainer = (height): ViewStyle => ({
-  position: 'absolute',
-  bottom: 80,
-  height,
-  alignItems: 'center',
-  justifyContent: 'space-around',
+const calculateMarginTop = (numberOfButton) => {
+  if (numberOfButton === 1) return ScreenHeight * 0.3;
+  else if (numberOfButton === 2) return ScreenHeight * 0.2;
+  else if (numberOfButton === 3)
+    return isIPhoneNotchFamily()
+      ? ScreenHeight * 0.15
+      : isAndroid
+      ? ScreenHeight * 0.15
+      : ScreenHeight * 0.08;
+};
+
+export const _bottomButtonContainer = (numberOfButton: number): ViewStyle => ({
+  marginTop: calculateMarginTop(numberOfButton),
 });
 
 export default StyleSheet.create<Style>({
@@ -44,7 +55,7 @@ export default StyleSheet.create<Style>({
     flex: 1,
   },
   headerContainer: {
-    height: ScreenHeight * 0.28,
+    height: ScreenHeight * 0.3,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -58,17 +69,16 @@ export default StyleSheet.create<Style>({
     color: '#696A6F',
   },
   textInputContainer: {
-    height: ScreenHeight * 0.25,
-    justifyContent: 'space-around',
     width: ScreenWidth * 0.85,
   },
   textInputStyle: {
-    height: 75,
+    height: isIPhoneNotchFamily() ? 70 : 60,
+    marginBottom: 8,
     fontSize: 16,
     paddingLeft: 32,
     backgroundColor: '#262A34',
     color: '#fff',
-    borderRadius: 24,
+    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
   },
   forgotPasswordTextStyle: {
     color: '#6C6D72',
@@ -81,8 +91,8 @@ export default StyleSheet.create<Style>({
   signInButtonStyle: {
     backgroundColor: '#5467FF',
     width: ScreenWidth * 0.85,
-    height: 75,
-    borderRadius: 24,
+    height: isIPhoneNotchFamily() ? 70 : 60,
+    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -98,8 +108,9 @@ export default StyleSheet.create<Style>({
   googleButtonStyle: {
     backgroundColor: '#FFFFFF',
     width: ScreenWidth * 0.85,
-    height: 75,
-    borderRadius: 24,
+    height: isIPhoneNotchFamily() ? 70 : 60,
+    marginTop: 8,
+    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -111,8 +122,9 @@ export default StyleSheet.create<Style>({
   facebookButtonStyle: {
     backgroundColor: '#3A579B',
     width: ScreenWidth * 0.85,
-    height: 75,
-    borderRadius: 24,
+    height: isIPhoneNotchFamily() ? 70 : 60,
+    marginTop: 8,
+    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -122,8 +134,7 @@ export default StyleSheet.create<Style>({
     fontWeight: '600',
   },
   signUpButtonContainer: {
-    position: 'absolute',
-    bottom: 32,
+    marginTop: 8,
     width: ScreenWidth * 0.9,
     justifyContent: 'center',
     alignItems: 'center',
