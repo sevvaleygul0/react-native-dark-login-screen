@@ -100,6 +100,7 @@ import DarkLoginScreen from "react-native-dark-login-screen";
 | handleFacebookLogIn     | function  |           undefined            | handle handleFacebookLogIn button is pressed                                             |
 | handleForgotPassword    | function  |           undefined            | handle handleForgotPassword button is pressed                                            |
 | handleSignUp            | function  |           undefined            | handle handleSignUp button is pressed for navigation to sign up screen                   |
+| enableForgotPassword    |  boolean  |              true              | enable the forgot password button                                                        |
 
 ## Sign Up Screen
 
