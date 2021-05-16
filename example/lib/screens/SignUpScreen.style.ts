@@ -1,0 +1,110 @@
+import {
+  isAndroid,
+  isIPhoneNotchFamily,
+} from '@freakycoder/react-native-helpers';
+import {
+  ViewStyle,
+  ImageStyle,
+  TextStyle,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
+const {width: ScreenWidth, height: ScreenHeight} = Dimensions.get('window');
+
+interface Style {
+  mainContainer: ViewStyle;
+  headerContainer: ViewStyle;
+  titleTextStyle: TextStyle;
+  descriptionTextStyle: TextStyle;
+  textInputContainer: ViewStyle;
+  textInputStyle: TextStyle;
+  signUpButtonContainer: ViewStyle;
+  signUpButtonStyle: ViewStyle;
+  signUpButtonTextStyle: TextStyle;
+  buttonContainer: ViewStyle;
+  signInQuestionTextStyle: TextStyle;
+  signInButtonStyle: ViewStyle;
+  signInButtonTextStyle: TextStyle;
+  signInButtonContainer: ViewStyle;
+}
+
+export default StyleSheet.create<Style>({
+  mainContainer: {
+    backgroundColor: '#181A1F',
+    alignItems: 'center',
+    flex: 1,
+  },
+  headerContainer: {
+    height: ScreenHeight * 0.3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  titleTextStyle: {
+    fontSize: 24,
+    color: '#fff',
+    fontWeight: '600',
+  },
+  descriptionTextStyle: {
+    fontSize: 15,
+    color: '#696A6F',
+  },
+  textInputContainer: {
+    width: ScreenWidth * 0.85,
+  },
+  textInputStyle: {
+    height: isIPhoneNotchFamily() ? 70 : 60,
+    marginBottom: 8,
+    fontSize: 16,
+    paddingLeft: 32,
+    backgroundColor: '#262A34',
+    color: '#fff',
+    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
+  },
+  signUpButtonContainer: {
+    marginTop: isAndroid ? ScreenHeight * 0.25 : ScreenHeight * 0.22,
+    width: ScreenWidth * 0.9,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  signUpButtonStyle: {
+    backgroundColor: '#5467FF',
+    width: ScreenWidth * 0.85,
+    height: isIPhoneNotchFamily() ? 70 : 60,
+    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  signUpButtonTextStyle: {
+    fontSize: 14,
+    color: '#fff',
+    fontWeight: '600',
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 70,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  signInQuestionTextStyle: {
+    fontSize: 14,
+    color: '#fff',
+  },
+  signInButtonStyle: {
+    height: 40,
+    justifyContent: 'center',
+    marginLeft: 8,
+  },
+  signInButtonTextStyle: {
+    fontSize: 14,
+    color: '#4251BC',
+  },
+  signInButtonContainer: {
+    marginTop: 8,
+    width: ScreenWidth * 0.9,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+});
