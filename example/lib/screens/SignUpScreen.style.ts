@@ -35,7 +35,7 @@ export default StyleSheet.create<Style>({
     flex: 1,
   },
   headerContainer: {
-    height: ScreenHeight * 0.3,
+    height: ScreenHeight * 0.27,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -52,16 +52,20 @@ export default StyleSheet.create<Style>({
     width: ScreenWidth * 0.85,
   },
   textInputStyle: {
-    height: isIPhoneNotchFamily() ? 70 : 60,
+    height: isIPhoneNotchFamily() ? 60 : 55,
     marginBottom: 8,
     fontSize: 16,
     paddingLeft: 32,
     backgroundColor: '#262A34',
     color: '#fff',
-    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
+    borderRadius: isIPhoneNotchFamily() ? 20 : 16,
   },
   signUpButtonContainer: {
-    marginTop: isAndroid ? ScreenHeight * 0.25 : ScreenHeight * 0.22,
+    marginTop: isIPhoneNotchFamily()
+      ? ScreenHeight * 0.34
+      : isAndroid
+      ? ScreenHeight * 0.32
+      : ScreenHeight * 0.27,
     width: ScreenWidth * 0.9,
     justifyContent: 'center',
     alignItems: 'center',
@@ -70,8 +74,8 @@ export default StyleSheet.create<Style>({
   signUpButtonStyle: {
     backgroundColor: '#5467FF',
     width: ScreenWidth * 0.85,
-    height: isIPhoneNotchFamily() ? 70 : 60,
-    borderRadius: isIPhoneNotchFamily() ? 24 : 20,
+    height: isIPhoneNotchFamily() ? 60 : 55,
+    borderRadius: isIPhoneNotchFamily() ? 20 : 16,
     justifyContent: 'center',
     alignItems: 'center',
   },

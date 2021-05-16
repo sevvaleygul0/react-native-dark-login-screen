@@ -4,7 +4,7 @@ import DarkLoginScreen from './lib/DarkLoginScreen';
 const App = () => {
   return (
     <DarkLoginScreen
-      enableAppleLogin={false}
+      // enableAppleLogin={false}
       // enableGoogleLogin={false}
       // enableFacebookLogin={false}
       handleSignInButton={() => console.log('sign in')}
