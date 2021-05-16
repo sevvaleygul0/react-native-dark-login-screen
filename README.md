@@ -139,9 +139,9 @@ import DarkLoginScreen from "react-native-dark-login-screen";
 - [x] ~~LICENSE~~
 - [ ] Light mode integration :)
 
-# Change Log
+## Inspirer
 
-Change log will be here !
+Thanks to https://dribbble.com/shots/15196515-Abda-The-Beginning for the design.
 
 ## Author
 
