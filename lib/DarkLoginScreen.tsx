@@ -43,6 +43,10 @@ interface DarkLoginScreenProps {
   signInQuestionText?: string;
   signInQuestionTextStyle?: TextStyle;
   enableForgotPassword?: boolean;
+  enableAppleLogin?: boolean;
+  appleButtonStyle?: ViewStyle;
+  appleButtonText?: string;
+  appleButtonTextStyle?: TextStyle;
   usernameChangeText?: (username: string) => void;
   passwordChangeText?: (password: string) => void;
   handleSignInButton?: () => void;
@@ -54,6 +58,7 @@ interface DarkLoginScreenProps {
   emailOnChange?: (email: string) => void;
   handleSignUp?: () => void;
   handleSignUpButton?: () => void;
+  handleAppleLogIn?: () => void;
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
@@ -85,6 +90,10 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
     signUpTextStyle,
     signUpButtonTextStyle,
     enableForgotPassword = true,
+    enableAppleLogin = true,
+    appleButtonStyle,
+    appleButtonText = 'Sign In With Apple',
+    appleButtonTextStyle,
     usernameChangeText,
     passwordChangeText,
     handleSignInButton,
@@ -92,6 +101,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
     handleFacebookLogIn,
     handleForgotPassword,
     handleSignUp,
+    handleAppleLogIn,
   } = props;
 
   const [newAccount, setNewAccount] = React.useState<boolean | undefined>(
@@ -143,6 +153,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
     let numberOfButton: number = 1;
     if (enableGoogleLogin) numberOfButton += 1;
     if (enableFacebookLogin) numberOfButton += 1;
+    if (enableAppleLogin) numberOfButton += 1;
     return (
       <View style={_bottomButtonContainer(numberOfButton)}>
         <TouchableOpacity
@@ -176,6 +187,19 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
             <Text
               style={[styles.facebookButtonTextStyle, facebookButtonTextStyle]}>
               {facebookButtonText}
+            </Text>
+          </TouchableOpacity>
+        )}
+        {enableAppleLogin && (
+          <TouchableOpacity
+            style={[styles.appleButtonStyle, appleButtonStyle]}
+            onPress={handleAppleLogIn}>
+            <Image
+              source={require('./Logo/apple.png')}
+              style={styles.logoImageStyle}
+            />
+            <Text style={[styles.appleButtonTextStyle, appleButtonTextStyle]}>
+              {appleButtonText}
             </Text>
           </TouchableOpacity>
         )}

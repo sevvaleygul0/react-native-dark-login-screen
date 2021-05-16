@@ -1,12 +1,9 @@
 import React from 'react';
-import DarkLoginScreen from './lib/DarkLoginScreen';
+import DarkLoginScreen from 'react-native-dark-login-screen';
 
 const App = () => {
   return (
     <DarkLoginScreen
-      // enableAppleLogin={false}
-      // enableGoogleLogin={false}
-      // enableFacebookLogin={false}
       handleSignInButton={() => console.log('sign in')}
       handleSignUpButton={() => console.log('sign up')}
       fullNameOnChange={(value: string) => console.log('full name', value)}

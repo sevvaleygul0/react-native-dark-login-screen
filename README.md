@@ -87,8 +87,12 @@ import DarkLoginScreen from "react-native-dark-login-screen";
 | facebookButtonStyle     | ViewStyle |            default             | set or override the style object for the facebook button style                           |
 | facebookButtonTextStyle | TextStyle |            default             | set or override the style object for the facebook button text style                      |
 | facebookButtonText      |  string   |     Sign In With Facebook      | change the facebook button text                                                          |
+| appleButtonStyle        | ViewStyle |            default             | set or override the style object for the apple button style                              |
+| appleButtonTextStyle    | TextStyle |            default             | set or override the style object for the apple button text style                         |
+| appleButtonText         |  string   |       Sign In With Apple       | change the apple button text                                                             |
 | enableGoogleLogin       |  boolean  |              true              | enable the google login button                                                           |
 | enableFacebookLogin     |  boolean  |              true              | enable the facebook login button                                                         |
+| enableAppleLogin        |  boolean  |              true              | enable the apple login button                                                            |
 | signUpQuestionText      |  string   |    Don't Have An Account ?     | change the question to sign up screen                                                    |
 | signUpButtonText        |  string   |            Sign Up             | change the sign up button text                                                           |
 | signUpTextStyle         | TextStyle |            default             | change the sign up button style                                                          |
@@ -97,6 +101,7 @@ import DarkLoginScreen from "react-native-dark-login-screen";
 | passwordChangeText      | function  |           undefined            | handle the passwordChangeText function                                                   |
 | handleSignInButton      | function  |           undefined            | handle Sign In button is pressed                                                         |
 | handleGoogleLogIn       | function  |           undefined            | handle handleGoogleLogIn button is pressed                                               |
+| handleAppleLogIn        | function  |           undefined            | handle handleAppleLogIn button is pressed                                                |
 | handleFacebookLogIn     | function  |           undefined            | handle handleFacebookLogIn button is pressed                                             |
 | handleForgotPassword    | function  |           undefined            | handle handleForgotPassword button is pressed                                            |
 | handleSignUp            | function  |           undefined            | handle handleSignUp button is pressed for navigation to sign up screen                   |
