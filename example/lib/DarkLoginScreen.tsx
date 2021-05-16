@@ -58,6 +58,7 @@ interface DarkLoginScreenProps {
   emailOnChange?: (email: string) => void;
   handleSignUp?: () => void;
   handleSignUpButton?: () => void;
+  handleAppleLogIn?: () => void;
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
@@ -100,6 +101,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
     handleFacebookLogIn,
     handleForgotPassword,
     handleSignUp,
+    handleAppleLogIn,
   } = props;
 
   const [newAccount, setNewAccount] = React.useState<boolean | undefined>(
@@ -151,6 +153,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
     let numberOfButton: number = 1;
     if (enableGoogleLogin) numberOfButton += 1;
     if (enableFacebookLogin) numberOfButton += 1;
+    if (enableAppleLogin) numberOfButton += 1;
     return (
       <View style={_bottomButtonContainer(numberOfButton)}>
         <TouchableOpacity
@@ -190,7 +193,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         {enableAppleLogin && (
           <TouchableOpacity
             style={[styles.appleButtonStyle, appleButtonStyle]}
-            onPress={handleFacebookLogIn}>
+            onPress={handleAppleLogIn}>
             <Image
               source={require('./Logo/apple.png')}
               style={styles.logoImageStyle}
