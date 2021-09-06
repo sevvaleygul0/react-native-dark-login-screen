@@ -1,17 +1,8 @@
-import * as React from 'react';
-import {
-  Text,
-  View,
-  TextInput,
-  TextStyle,
-  TouchableOpacity,
-  ViewStyle,
-  Image,
-  Dimensions,
-  KeyboardAvoidingView,
-} from 'react-native';
-import styles, {_bottomButtonContainer} from './DarkLoginScreen.style';
-import SignUpScreen from './screens/SignUpScreen';
+import * as React from "react";
+import { View, TextStyle, ViewStyle } from "react-native";
+import styles from "./DarkLoginScreen.style";
+import SignUpScreen from "./screens/sign-up/SignUpScreen";
+import SignInScreen from "./screens/sign-in/SignInScreen";
 
 interface DarkLoginScreenProps {
   titleText?: string;
@@ -62,192 +53,24 @@ interface DarkLoginScreenProps {
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
-  const {
-    titleText = 'Welcome Back!',
-    titleTextStyle,
-    descriptionText = 'Please sign in to your account',
-    descriptionTextStyle,
-    usernamePlaceholder = 'Username',
-    textInputStyle,
-    placeholderTextColor = '#6C6D72',
-    passwordPlaceholder = 'Password',
-    passwordTextInputStyle,
-    forgotPasswordText = 'Forgot Password?',
-    forgotPasswordTextStyle,
-    signInButtonStyle,
-    signInButtonText = 'Sign In',
-    signInButtonTextStyle,
-    googleButtonStyle,
-    googleButtonTextStyle,
-    googleButtonText = 'Sign In With Google',
-    facebookButtonStyle,
-    facebookButtonTextStyle,
-    facebookButtonText = 'Sign In With Facebook',
-    enableGoogleLogin = true,
-    enableFacebookLogin = true,
-    signUpQuestionText = "Don't Have An Account ?",
-    signUpButtonText = 'Sign Up',
-    signUpTextStyle,
-    signUpButtonTextStyle,
-    enableForgotPassword = true,
-    enableAppleLogin = true,
-    appleButtonStyle,
-    appleButtonText = 'Sign In With Apple',
-    appleButtonTextStyle,
-    usernameChangeText,
-    passwordChangeText,
-    handleSignInButton,
-    handleGoogleLogIn,
-    handleFacebookLogIn,
-    handleForgotPassword,
-    handleSignUp,
-    handleAppleLogIn,
-  } = props;
-
   const [newAccount, setNewAccount] = React.useState<boolean | undefined>(
     false,
-  );
-
-  const renderHeaderTextContainer = () => (
-    <View style={styles.headerContainer}>
-      <Text style={[styles.titleTextStyle, titleTextStyle]}>{titleText}</Text>
-      <View style={{marginTop: 16}}>
-        <Text style={[styles.descriptionTextStyle, descriptionTextStyle]}>
-          {descriptionText}
-        </Text>
-      </View>
-    </View>
-  );
-
-  const renderInputContainer = () => (
-    <View style={styles.textInputContainer}>
-      <TextInput
-        {...props}
-        placeholder={usernamePlaceholder}
-        placeholderTextColor={placeholderTextColor}
-        style={[styles.textInputStyle, textInputStyle]}
-        onChangeText={usernameChangeText}
-      />
-      <TextInput
-        {...props}
-        placeholder={passwordPlaceholder}
-        placeholderTextColor={placeholderTextColor}
-        style={[styles.textInputStyle, passwordTextInputStyle]}
-        secureTextEntry
-        onChangeText={passwordChangeText}
-      />
-      {enableForgotPassword && (
-        <TouchableOpacity
-          style={styles.forgotButtonStyle}
-          onPress={handleForgotPassword}>
-          <Text
-            style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}>
-            {forgotPasswordText}
-          </Text>
-        </TouchableOpacity>
-      )}
-    </View>
-  );
-
-  const renderLoginButtonsContainer = () => {
-    let numberOfButton: number = 1;
-    if (enableGoogleLogin) numberOfButton += 1;
-    if (enableFacebookLogin) numberOfButton += 1;
-    if (enableAppleLogin) numberOfButton += 1;
-    return (
-      <View style={_bottomButtonContainer(numberOfButton)}>
-        <TouchableOpacity
-          style={[styles.signInButtonStyle, signInButtonStyle]}
-          onPress={handleSignInButton}>
-          <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
-            {signInButtonText}
-          </Text>
-        </TouchableOpacity>
-        {enableGoogleLogin && (
-          <TouchableOpacity
-            style={[styles.googleButtonStyle, googleButtonStyle]}
-            onPress={handleGoogleLogIn}>
-            <Image
-              source={require('./Logo/google.png')}
-              style={styles.logoImageStyle}
-            />
-            <Text style={[styles.googleButtonTextStyle, googleButtonTextStyle]}>
-              {googleButtonText}
-            </Text>
-          </TouchableOpacity>
-        )}
-        {enableFacebookLogin && (
-          <TouchableOpacity
-            style={[styles.facebookButtonStyle, facebookButtonStyle]}
-            onPress={handleFacebookLogIn}>
-            <Image
-              source={require('./Logo/facebook.png')}
-              style={styles.logoImageStyle}
-            />
-            <Text
-              style={[styles.facebookButtonTextStyle, facebookButtonTextStyle]}>
-              {facebookButtonText}
-            </Text>
-          </TouchableOpacity>
-        )}
-        {enableAppleLogin && (
-          <TouchableOpacity
-            style={[styles.appleButtonStyle, appleButtonStyle]}
-            onPress={handleAppleLogIn}>
-            <Image
-              source={require('./Logo/apple.png')}
-              style={styles.logoImageStyle}
-            />
-            <Text style={[styles.appleButtonTextStyle, appleButtonTextStyle]}>
-              {appleButtonText}
-            </Text>
-          </TouchableOpacity>
-        )}
-      </View>
-    );
-  };
-
-  const renderSignUpButtonContainer = () => (
-    <View style={styles.signUpButtonContainer}>
-      <Text style={[styles.signUpTextStyle, signUpTextStyle]}>
-        {signUpQuestionText}
-      </Text>
-      <TouchableOpacity
-        style={styles.signUpButtonStyle}
-        onPress={() => {
-          handleSignUp && handleSignUp();
-          setNewAccount(true);
-        }}>
-        <Text style={[styles.signUpButtonTextStyle, signUpButtonTextStyle]}>
-          {signUpButtonText}
-        </Text>
-      </TouchableOpacity>
-    </View>
   );
 
   const renderScreenChange = () => {
     if (!newAccount) {
       return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <KeyboardAvoidingView
-            style={{flex: 1, alignItems: 'center'}}
-            behavior="padding"
-            enabled>
-            {renderHeaderTextContainer()}
-            {renderInputContainer()}
-            {renderLoginButtonsContainer()}
-            {renderSignUpButtonContainer()}
-          </KeyboardAvoidingView>
-        </View>
+        <SignInScreen
+          {...props}
+          onSignupPress={() => {
+            props.handleSignUp && props.handleSignUp();
+            setNewAccount(true);
+          }}
+        />
       );
     } else {
       return (
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
+        <View style={styles.screenContainer}>
           <SignUpScreen {...props} handleSignIn={() => setNewAccount(false)} />
         </View>
       );

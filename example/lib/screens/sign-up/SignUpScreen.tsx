@@ -1,4 +1,9 @@
-import * as React from 'react';
+import {
+  getStatusBarHeight,
+  isIPhoneNotchFamily,
+  isIPhoneXFamily,
+} from "@freakycoder/react-native-helpers";
+import * as React from "react";
 import {
   Text,
   View,
@@ -6,8 +11,9 @@ import {
   TextStyle,
   TouchableOpacity,
   ViewStyle,
-} from 'react-native';
-import styles from './SignUpScreen.style';
+  SafeAreaView,
+} from "react-native";
+import styles from "./SignUpScreen.style";
 
 interface SignUpScreenProps {
   signUpTitle?: string;
@@ -36,23 +42,23 @@ interface SignUpScreenProps {
 
 const SignUpScreen = (props: SignUpScreenProps) => {
   const {
-    signUpTitle = 'Create New Account',
-    signUpDescriptionText = 'Please fill in the form to continue',
+    signUpTitle = "Create New Account",
+    signUpDescriptionText = "Please fill in the form to continue",
     signUpTitleTextStyle,
     signUpDescriptionTextStyle,
-    fullNamePlaceholderText = 'Full Name',
-    placeholderTextColor = '#6C6D72',
+    fullNamePlaceholderText = "Full Name",
+    placeholderTextColor = "#6C6D72",
     textInputStyle,
-    emailPlaceholderText = 'Email Address',
-    passwordPlaceholder = 'Password',
+    emailPlaceholderText = "Email Address",
+    passwordPlaceholder = "Password",
     passwordTextInputStyle,
-    signUpButtonText = 'Sign Up',
+    signUpButtonText = "Sign Up",
     signUpButtonStyle,
     signUpButtonTextStyle,
     signInQuestionTextStyle,
-    signInQuestionText = 'Have An Account?',
+    signInQuestionText = "Have An Account?",
     signInButtonTextStyle,
-    signInButtonText = 'Sign In',
+    signInButtonText = "Sign In",
     fullNameOnChange,
     emailOnChange,
     singUpPasswordChangeText,
@@ -65,7 +71,7 @@ const SignUpScreen = (props: SignUpScreenProps) => {
       <Text style={[styles.titleTextStyle, signUpTitleTextStyle]}>
         {signUpTitle}
       </Text>
-      <View style={{marginTop: 16}}>
+      <View style={{ marginTop: 16 }}>
         <Text style={[styles.descriptionTextStyle, signUpDescriptionTextStyle]}>
           {signUpDescriptionText}
         </Text>
@@ -104,7 +110,8 @@ const SignUpScreen = (props: SignUpScreenProps) => {
     <View style={styles.signUpButtonContainer}>
       <TouchableOpacity
         style={[styles.signUpButtonStyle, signUpButtonStyle]}
-        onPress={handleSignUpButton}>
+        onPress={handleSignUpButton}
+      >
         <Text style={[styles.signUpButtonTextStyle, signUpButtonTextStyle]}>
           {signUpButtonText}
         </Text>
@@ -119,7 +126,8 @@ const SignUpScreen = (props: SignUpScreenProps) => {
       </Text>
       <TouchableOpacity
         style={styles.signInButtonStyle}
-        onPress={() => handleSignIn && handleSignIn()}>
+        onPress={() => handleSignIn && handleSignIn()}
+      >
         <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
           {signInButtonText}
         </Text>
@@ -128,12 +136,21 @@ const SignUpScreen = (props: SignUpScreenProps) => {
   );
 
   return (
-    <View style={styles.mainContainer}>
-      {renderHeaderTextContainer()}
-      {renderTextInputContainer()}
-      {renderSignUpButton()}
-      {renderSignInTextContainer()}
-    </View>
+    <>
+      <SafeAreaView style={styles.mainContainer}>
+        {renderHeaderTextContainer()}
+        {renderTextInputContainer()}
+      </SafeAreaView>
+      <View
+        style={{
+          position: "absolute",
+          bottom: isIPhoneNotchFamily() ? getStatusBarHeight() : 8,
+        }}
+      >
+        {renderSignUpButton()}
+        {renderSignInTextContainer()}
+      </View>
+    </>
   );
 };
 
