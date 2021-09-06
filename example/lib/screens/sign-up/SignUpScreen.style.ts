@@ -2,13 +2,7 @@ import {
   isAndroid,
   isIPhoneNotchFamily,
 } from '@freakycoder/react-native-helpers';
-import {
-  ViewStyle,
-  ImageStyle,
-  TextStyle,
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
+import {ViewStyle, TextStyle, StyleSheet, Dimensions} from 'react-native';
 const {width: ScreenWidth, height: ScreenHeight} = Dimensions.get('window');
 
 interface Style {
@@ -101,8 +95,9 @@ export default StyleSheet.create<Style>({
     marginLeft: 8,
   },
   signInButtonTextStyle: {
-    fontSize: 14,
-    color: '#4251BC',
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#519bf4',
   },
   signInButtonContainer: {
     marginTop: 8,

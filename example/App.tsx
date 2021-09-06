@@ -1,5 +1,6 @@
 import React from 'react';
-import DarkLoginScreen from 'react-native-dark-login-screen';
+// import DarkLoginScreen from 'react-native-dark-login-screen';
+import DarkLoginScreen from './lib/DarkLoginScreen';
 
 const App = () => {
   return (

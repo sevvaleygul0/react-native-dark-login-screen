@@ -36,28 +36,8 @@ interface Style {
   appleButtonTextStyle: TextStyle;
   newAccountContainer: ViewStyle;
   keyboardAvoidingViewStyle: ViewStyle;
+  descriptionContainer: ViewStyle;
 }
-
-const calculateMarginTop = (numberOfButton) => {
-  if (numberOfButton === 1) return ScreenHeight * 0.35;
-  else if (numberOfButton === 2) return ScreenHeight * 0.25;
-  else if (numberOfButton === 3)
-    return isIPhoneNotchFamily()
-      ? ScreenHeight * 0.22
-      : isAndroid
-      ? ScreenHeight * 0.2
-      : ScreenHeight * 0.13;
-  else if (numberOfButton === 4)
-    return isIPhoneNotchFamily()
-      ? ScreenHeight * 0.15
-      : isAndroid
-      ? ScreenHeight * 0.13
-      : ScreenHeight * 0.08;
-};
-
-export const _bottomButtonContainer = (numberOfButton: number): ViewStyle => ({
-  marginTop: calculateMarginTop(numberOfButton),
-});
 
 export default StyleSheet.create<Style>({
   screenContainer: {
@@ -71,9 +51,9 @@ export default StyleSheet.create<Style>({
     flex: 1,
   },
   headerContainer: {
-    height: ScreenHeight * 0.27,
-    justifyContent: "center",
+    marginTop: 16,
     alignItems: "center",
+    justifyContent: "center",
   },
   titleTextStyle: {
     fontSize: 24,
@@ -85,6 +65,8 @@ export default StyleSheet.create<Style>({
     color: "#696A6F",
   },
   textInputContainer: {
+    marginTop: 24,
+    justifyContent: "center",
     width: ScreenWidth * 0.85,
   },
   textInputStyle: {
@@ -105,6 +87,7 @@ export default StyleSheet.create<Style>({
     marginLeft: "auto",
   },
   signInButtonStyle: {
+    marginTop: 24,
     backgroundColor: "#5467FF",
     width: ScreenWidth * 0.85,
     height: isIPhoneNotchFamily() ? 60 : 55,
@@ -166,8 +149,9 @@ export default StyleSheet.create<Style>({
     color: "#fff",
   },
   signUpButtonTextStyle: {
-    fontSize: 14,
-    color: "#4251BC",
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#519bf4",
   },
   appleButtonStyle: {
     backgroundColor: "#FFFFFF",
@@ -190,6 +174,8 @@ export default StyleSheet.create<Style>({
   },
   keyboardAvoidingViewStyle: {
     flex: 1,
-    alignItems: "center",
+  },
+  descriptionContainer: {
+    marginTop: 16,
   },
 });
