@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Text,
   View,
@@ -9,9 +9,9 @@ import {
   Image,
   Dimensions,
   KeyboardAvoidingView,
-} from 'react-native';
-import styles, {_bottomButtonContainer} from './DarkLoginScreen.style';
-import SignUpScreen from './screens/SignUpScreen';
+} from "react-native";
+import styles, { _bottomButtonContainer } from "./DarkLoginScreen.style";
+import SignUpScreen from "./screens/SignUpScreen";
 
 interface DarkLoginScreenProps {
   titleText?: string;
@@ -63,36 +63,36 @@ interface DarkLoginScreenProps {
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
   const {
-    titleText = 'Welcome Back!',
+    titleText = "Welcome Back!",
     titleTextStyle,
-    descriptionText = 'Please sign in to your account',
+    descriptionText = "Please sign in to your account",
     descriptionTextStyle,
-    usernamePlaceholder = 'Username',
+    usernamePlaceholder = "Username",
     textInputStyle,
-    placeholderTextColor = '#6C6D72',
-    passwordPlaceholder = 'Password',
+    placeholderTextColor = "#6C6D72",
+    passwordPlaceholder = "Password",
     passwordTextInputStyle,
-    forgotPasswordText = 'Forgot Password?',
+    forgotPasswordText = "Forgot Password?",
     forgotPasswordTextStyle,
     signInButtonStyle,
-    signInButtonText = 'Sign In',
+    signInButtonText = "Sign In",
     signInButtonTextStyle,
     googleButtonStyle,
     googleButtonTextStyle,
-    googleButtonText = 'Sign In With Google',
+    googleButtonText = "Sign In With Google",
     facebookButtonStyle,
     facebookButtonTextStyle,
-    facebookButtonText = 'Sign In With Facebook',
+    facebookButtonText = "Sign In With Facebook",
     enableGoogleLogin = true,
     enableFacebookLogin = true,
     signUpQuestionText = "Don't Have An Account ?",
-    signUpButtonText = 'Sign Up',
+    signUpButtonText = "Sign Up",
     signUpTextStyle,
     signUpButtonTextStyle,
     enableForgotPassword = true,
     enableAppleLogin = true,
     appleButtonStyle,
-    appleButtonText = 'Sign In With Apple',
+    appleButtonText = "Sign In With Apple",
     appleButtonTextStyle,
     usernameChangeText,
     passwordChangeText,
@@ -111,7 +111,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
   const renderHeaderTextContainer = () => (
     <View style={styles.headerContainer}>
       <Text style={[styles.titleTextStyle, titleTextStyle]}>{titleText}</Text>
-      <View style={{marginTop: 16}}>
+      <View style={{ marginTop: 16 }}>
         <Text style={[styles.descriptionTextStyle, descriptionTextStyle]}>
           {descriptionText}
         </Text>
@@ -122,14 +122,12 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
   const renderInputContainer = () => (
     <View style={styles.textInputContainer}>
       <TextInput
-        {...props}
         placeholder={usernamePlaceholder}
         placeholderTextColor={placeholderTextColor}
         style={[styles.textInputStyle, textInputStyle]}
         onChangeText={usernameChangeText}
       />
       <TextInput
-        {...props}
         placeholder={passwordPlaceholder}
         placeholderTextColor={placeholderTextColor}
         style={[styles.textInputStyle, passwordTextInputStyle]}
@@ -139,9 +137,11 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
       {enableForgotPassword && (
         <TouchableOpacity
           style={styles.forgotButtonStyle}
-          onPress={handleForgotPassword}>
+          onPress={handleForgotPassword}
+        >
           <Text
-            style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}>
+            style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}
+          >
             {forgotPasswordText}
           </Text>
         </TouchableOpacity>
@@ -158,7 +158,8 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
       <View style={_bottomButtonContainer(numberOfButton)}>
         <TouchableOpacity
           style={[styles.signInButtonStyle, signInButtonStyle]}
-          onPress={handleSignInButton}>
+          onPress={handleSignInButton}
+        >
           <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
             {signInButtonText}
           </Text>
@@ -166,9 +167,10 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         {enableGoogleLogin && (
           <TouchableOpacity
             style={[styles.googleButtonStyle, googleButtonStyle]}
-            onPress={handleGoogleLogIn}>
+            onPress={handleGoogleLogIn}
+          >
             <Image
-              source={require('./Logo/google.png')}
+              source={require("./Logo/google.png")}
               style={styles.logoImageStyle}
             />
             <Text style={[styles.googleButtonTextStyle, googleButtonTextStyle]}>
@@ -179,13 +181,15 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         {enableFacebookLogin && (
           <TouchableOpacity
             style={[styles.facebookButtonStyle, facebookButtonStyle]}
-            onPress={handleFacebookLogIn}>
+            onPress={handleFacebookLogIn}
+          >
             <Image
-              source={require('./Logo/facebook.png')}
+              source={require("./Logo/facebook.png")}
               style={styles.logoImageStyle}
             />
             <Text
-              style={[styles.facebookButtonTextStyle, facebookButtonTextStyle]}>
+              style={[styles.facebookButtonTextStyle, facebookButtonTextStyle]}
+            >
               {facebookButtonText}
             </Text>
           </TouchableOpacity>
@@ -193,9 +197,10 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         {enableAppleLogin && (
           <TouchableOpacity
             style={[styles.appleButtonStyle, appleButtonStyle]}
-            onPress={handleAppleLogIn}>
+            onPress={handleAppleLogIn}
+          >
             <Image
-              source={require('./Logo/apple.png')}
+              source={require("./Logo/apple.png")}
               style={styles.logoImageStyle}
             />
             <Text style={[styles.appleButtonTextStyle, appleButtonTextStyle]}>
@@ -217,7 +222,8 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
         onPress={() => {
           handleSignUp && handleSignUp();
           setNewAccount(true);
-        }}>
+        }}
+      >
         <Text style={[styles.signUpButtonTextStyle, signUpButtonTextStyle]}>
           {signUpButtonText}
         </Text>
@@ -228,11 +234,12 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
   const renderScreenChange = () => {
     if (!newAccount) {
       return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.newAccountContainer}>
           <KeyboardAvoidingView
-            style={{flex: 1, alignItems: 'center'}}
+            enabled
             behavior="padding"
-            enabled>
+            style={styles.keyboardAvoidingViewStyle}
+          >
             {renderHeaderTextContainer()}
             {renderInputContainer()}
             {renderLoginButtonsContainer()}
@@ -242,12 +249,7 @@ const DarkLoginScreen = (props: DarkLoginScreenProps) => {
       );
     } else {
       return (
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
+        <View style={styles.screenContainer}>
           <SignUpScreen {...props} handleSignIn={() => setNewAccount(false)} />
         </View>
       );
