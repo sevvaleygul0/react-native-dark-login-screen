@@ -1,9 +1,8 @@
+import * as React from "react";
 import {
   getStatusBarHeight,
   isIPhoneNotchFamily,
-  isIPhoneXFamily,
 } from "@freakycoder/react-native-helpers";
-import * as React from "react";
 import {
   Text,
   View,
