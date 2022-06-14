@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   getStatusBarHeight,
+  isAndroid,
   isIPhoneNotchFamily,
 } from "@freakycoder/react-native-helpers";
 import {
@@ -19,6 +20,7 @@ import {
  * ? Local Imports
  */
 import styles from "./SignInScreen.style";
+import { Platform } from "react-native";
 
 type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 
@@ -44,10 +46,10 @@ interface ISignInScreenProps {
   facebookButtonText?: string;
   enableGoogleLogin?: boolean;
   enableFacebookLogin?: boolean;
-  signUpQuestionText?: string;
-  signUpButtonText?: string;
-  signUpTextStyle?: TextStyle;
-  signUpButtonTextStyle?: TextStyle;
+  accountQuestionText?: string;
+  signUpQuestionButtonText?: string;
+  accountQuestionTextStyle?: TextStyle;
+  signUpQuestionButtonTextStyle?: TextStyle;
   signInQuestionText?: string;
   signInQuestionTextStyle?: TextStyle;
   enableForgotPassword?: boolean;
@@ -92,10 +94,10 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
   facebookButtonText = "Sign In With Facebook",
   enableGoogleLogin = true,
   enableFacebookLogin = true,
-  signUpQuestionText = "Don't Have An Account ?",
-  signUpButtonText = "Sign Up",
-  signUpTextStyle,
-  signUpButtonTextStyle,
+  accountQuestionText = "Don't Have An Account ?",
+  signUpQuestionButtonText = "Sign Up",
+  accountQuestionTextStyle,
+  signUpQuestionButtonTextStyle,
   enableForgotPassword = true,
   enableAppleLogin = true,
   appleButtonStyle,
@@ -137,18 +139,14 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
         secureTextEntry
         onChangeText={passwordChangeText}
       />
-      {enableForgotPassword && (
-        <TouchableOpacity
-          style={styles.forgotButtonStyle}
-          onPress={handleForgotPassword}
-        >
-          <Text
-            style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}
-          >
-            {forgotPasswordText}
-          </Text>
-        </TouchableOpacity>
-      )}
+      <TouchableOpacity
+        style={styles.forgotButtonStyle}
+        onPress={handleForgotPassword}
+      >
+        <Text style={[styles.forgotPasswordTextStyle, forgotPasswordTextStyle]}>
+          {forgotPasswordText}
+        </Text>
+      </TouchableOpacity>
       <TouchableOpacity
         style={[styles.signInButtonStyle, signInButtonStyle]}
         onPress={handleSignInButton}
@@ -160,92 +158,85 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
     </View>
   );
 
-  const renderLoginButtonsContainer = () => {
-    let numberOfButton: number = 1;
-    if (enableGoogleLogin) numberOfButton += 1;
-    if (enableFacebookLogin) numberOfButton += 1;
-    if (enableAppleLogin) numberOfButton += 1;
-    return (
-      <View>
-        {enableGoogleLogin && (
-          <TouchableOpacity
-            style={[styles.googleButtonStyle, googleButtonStyle]}
-            onPress={handleGoogleLogIn}
+  const renderLoginButtonsContainer = () => (
+    <>
+      {enableGoogleLogin && (
+        <TouchableOpacity
+          style={[styles.googleButtonStyle, googleButtonStyle]}
+          onPress={handleGoogleLogIn}
+        >
+          <Image
+            source={require("../../local-assets/google.png")}
+            style={styles.logoImageStyle}
+          />
+          <Text style={[styles.googleButtonTextStyle, googleButtonTextStyle]}>
+            {googleButtonText}
+          </Text>
+        </TouchableOpacity>
+      )}
+      {enableFacebookLogin && (
+        <TouchableOpacity
+          style={[styles.facebookButtonStyle, facebookButtonStyle]}
+          onPress={handleFacebookLogIn}
+        >
+          <Image
+            source={require("../../local-assets/facebook.png")}
+            style={styles.logoImageStyle}
+          />
+          <Text
+            style={[styles.facebookButtonTextStyle, facebookButtonTextStyle]}
           >
-            <Image
-              source={require("../../local-assets/google.png")}
-              style={styles.logoImageStyle}
-            />
-            <Text style={[styles.googleButtonTextStyle, googleButtonTextStyle]}>
-              {googleButtonText}
-            </Text>
-          </TouchableOpacity>
-        )}
-        {enableFacebookLogin && (
-          <TouchableOpacity
-            style={[styles.facebookButtonStyle, facebookButtonStyle]}
-            onPress={handleFacebookLogIn}
-          >
-            <Image
-              source={require("../../local-assets/facebook.png")}
-              style={styles.logoImageStyle}
-            />
-            <Text
-              style={[styles.facebookButtonTextStyle, facebookButtonTextStyle]}
-            >
-              {facebookButtonText}
-            </Text>
-          </TouchableOpacity>
-        )}
-        {enableAppleLogin && (
-          <TouchableOpacity
-            style={[styles.appleButtonStyle, appleButtonStyle]}
-            onPress={handleAppleLogIn}
-          >
-            <Image
-              source={require("../../local-assets/apple.png")}
-              style={styles.logoImageStyle}
-            />
-            <Text style={[styles.appleButtonTextStyle, appleButtonTextStyle]}>
-              {appleButtonText}
-            </Text>
-          </TouchableOpacity>
-        )}
-      </View>
-    );
-  };
+            {facebookButtonText}
+          </Text>
+        </TouchableOpacity>
+      )}
+      {enableAppleLogin && !isAndroid && (
+        <TouchableOpacity
+          style={[styles.appleButtonStyle, appleButtonStyle]}
+          onPress={handleAppleLogIn}
+        >
+          <Image
+            source={require("../../local-assets/apple.png")}
+            style={styles.logoImageStyle}
+          />
+          <Text style={[styles.appleButtonTextStyle, appleButtonTextStyle]}>
+            {appleButtonText}
+          </Text>
+        </TouchableOpacity>
+      )}
+    </>
+  );
 
-  const renderSignUpButtonContainer = () => (
-    <View style={styles.signUpButtonContainer}>
-      <Text style={[styles.signUpTextStyle, signUpTextStyle]}>
-        {signUpQuestionText}
+  const rendersignUpQuestionButtonContainer = () => (
+    <View style={styles.signUpQuestionButtonContainer}>
+      <Text style={[styles.accountQuestionTextStyle, accountQuestionTextStyle]}>
+        {accountQuestionText}
       </Text>
       <TouchableOpacity
         style={styles.signUpButtonStyle}
-        onPress={() => {
-          onSignupPress && onSignupPress();
-        }}
+        onPress={onSignupPress}
       >
-        <Text style={[styles.signUpButtonTextStyle, signUpButtonTextStyle]}>
-          {signUpButtonText}
+        <Text
+          style={[
+            styles.signUpQuestionButtonTextStyle,
+            signUpQuestionButtonTextStyle,
+          ]}
+        >
+          {signUpQuestionButtonText}
         </Text>
       </TouchableOpacity>
     </View>
   );
 
   return (
-    <View style={styles.newAccountContainer}>
-      <KeyboardAvoidingView
-        enabled
-        behavior="padding"
-        style={styles.keyboardAvoidingViewStyle}
-      >
-        <SafeAreaView
-          style={{ alignItems: "center", justifyContent: "center" }}
-        >
-          {renderHeaderTextContainer()}
-          {renderInputContainer()}
-        </SafeAreaView>
+    <KeyboardAvoidingView
+      enabled
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.keyboardAvoidingViewStyle}
+    >
+      <SafeAreaView style={{ flex: 1 }}>
+        {renderHeaderTextContainer()}
+        {renderInputContainer()}
         <View
           style={{
             position: "absolute",
@@ -253,10 +244,10 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
           }}
         >
           {renderLoginButtonsContainer()}
-          {renderSignUpButtonContainer()}
+          {rendersignUpQuestionButtonContainer()}
         </View>
-      </KeyboardAvoidingView>
-    </View>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 

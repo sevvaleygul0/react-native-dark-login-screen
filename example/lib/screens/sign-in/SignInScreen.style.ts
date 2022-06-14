@@ -6,6 +6,7 @@ import {
   Dimensions,
 } from "react-native";
 import {
+  getStatusBarHeight,
   isAndroid,
   isIPhoneNotchFamily,
 } from "@freakycoder/react-native-helpers";
@@ -23,14 +24,13 @@ export default StyleSheet.create({
     flex: 1,
   },
   headerContainer: {
-    marginTop: 16,
+    marginTop: getStatusBarHeight() ? 32 : 24,
     alignItems: "center",
     justifyContent: "center",
   },
   titleTextStyle: {
     fontSize: 24,
     color: "#fff",
-    fontWeight: "600",
   },
   descriptionTextStyle: {
     fontSize: 15,
@@ -54,12 +54,12 @@ export default StyleSheet.create({
     color: "#6C6D72",
   },
   forgotButtonStyle: {
-    height: 30,
+    height: 44,
     justifyContent: "center",
     marginLeft: "auto",
   },
   signInButtonStyle: {
-    marginTop: 24,
+    marginTop: 4,
     backgroundColor: "#5467FF",
     height: isIPhoneNotchFamily() ? 60 : 55,
     borderRadius: isIPhoneNotchFamily() ? 20 : 16,
@@ -68,7 +68,6 @@ export default StyleSheet.create({
   },
   signInButtonTextStyle: {
     color: "#fff",
-    fontWeight: "600",
   },
   logoImageStyle: {
     width: 32,
@@ -77,7 +76,7 @@ export default StyleSheet.create({
   },
   googleButtonStyle: {
     backgroundColor: "#FFFFFF",
-    width: ScreenWidth * 0.85,
+    width: ScreenWidth * 0.9,
     height: isIPhoneNotchFamily() ? 60 : 55,
     marginTop: 8,
     borderRadius: isIPhoneNotchFamily() ? 20 : 16,
@@ -87,11 +86,10 @@ export default StyleSheet.create({
   },
   googleButtonTextStyle: {
     color: "#181A1F",
-    fontWeight: "600",
   },
   facebookButtonStyle: {
     backgroundColor: "#3A579B",
-    width: ScreenWidth * 0.85,
+    width: ScreenWidth * 0.9,
     height: isIPhoneNotchFamily() ? 60 : 55,
     marginTop: 8,
     borderRadius: isIPhoneNotchFamily() ? 20 : 16,
@@ -101,9 +99,8 @@ export default StyleSheet.create({
   },
   facebookButtonTextStyle: {
     color: "#FFF",
-    fontWeight: "600",
   },
-  signUpButtonContainer: {
+  signUpQuestionButtonContainer: {
     marginTop: 8,
     width: ScreenWidth * 0.9,
     justifyContent: "center",
@@ -115,18 +112,18 @@ export default StyleSheet.create({
     justifyContent: "center",
     marginLeft: 8,
   },
-  signUpTextStyle: {
+  accountQuestionTextStyle: {
     fontSize: 14,
     color: "#fff",
   },
-  signUpButtonTextStyle: {
+  signUpQuestionButtonTextStyle: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#519bf4",
   },
   appleButtonStyle: {
     backgroundColor: "#FFFFFF",
-    width: ScreenWidth * 0.85,
+    width: ScreenWidth * 0.9,
     height: isIPhoneNotchFamily() ? 60 : 55,
     marginTop: 8,
     borderRadius: isIPhoneNotchFamily() ? 20 : 16,
@@ -136,13 +133,8 @@ export default StyleSheet.create({
   },
   appleButtonTextStyle: {
     color: "#181A1F",
-    fontWeight: "600",
   },
-  newAccountContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+
   keyboardAvoidingViewStyle: {
     flex: 1,
   },
