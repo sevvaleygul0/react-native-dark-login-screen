@@ -11,33 +11,6 @@ import {
 } from "@freakycoder/react-native-helpers";
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
-interface Style {
-  mainContainer: ViewStyle;
-  screenContainer: ViewStyle;
-  headerContainer: ViewStyle;
-  titleTextStyle: TextStyle;
-  descriptionTextStyle: TextStyle;
-  textInputContainer: ViewStyle;
-  textInputStyle: TextStyle;
-  forgotPasswordTextStyle: TextStyle;
-  forgotButtonStyle: ViewStyle;
-  signInButtonStyle: ViewStyle;
-  signInButtonTextStyle: TextStyle;
-  logoImageStyle: ImageStyle;
-  googleButtonStyle: ViewStyle;
-  googleButtonTextStyle: TextStyle;
-  facebookButtonStyle: ViewStyle;
-  facebookButtonTextStyle: TextStyle;
-  signUpButtonContainer: ViewStyle;
-  signUpButtonStyle: ViewStyle;
-  signUpTextStyle: TextStyle;
-  signUpButtonTextStyle: TextStyle;
-  appleButtonStyle: ViewStyle;
-  appleButtonTextStyle: TextStyle;
-  newAccountContainer: ViewStyle;
-  keyboardAvoidingViewStyle: ViewStyle;
-}
-
 const calculateMarginTop = (numberOfButton) => {
   if (numberOfButton === 1) return ScreenHeight * 0.35;
   else if (numberOfButton === 2) return ScreenHeight * 0.25;
@@ -59,11 +32,9 @@ export const _bottomButtonContainer = (numberOfButton: number): ViewStyle => ({
   marginTop: calculateMarginTop(numberOfButton),
 });
 
-export default StyleSheet.create<Style>({
-  screenContainer: {
+export default StyleSheet.create({
+  keyboardAvoidingViewStyle: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
   mainContainer: {
     backgroundColor: "#181A1F",
@@ -187,9 +158,5 @@ export default StyleSheet.create<Style>({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  keyboardAvoidingViewStyle: {
-    flex: 1,
-    alignItems: "center",
   },
 });

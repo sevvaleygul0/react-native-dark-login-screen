@@ -1,6 +1,12 @@
 import * as React from "react";
-import { View, TextStyle, ViewStyle } from "react-native";
-import styles from './DarkLoginScreen.style';
+import {
+  View,
+  TextStyle,
+  ViewStyle,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
+import styles from "./DarkLoginScreen.style";
 import SignUpScreen from "./screens/sign-up/SignUpScreen";
 import SignInScreen from "./screens/sign-in/SignInScreen";
 
@@ -53,31 +59,34 @@ interface DarkLoginScreenProps {
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
-  const [newAccount, setNewAccount] = React.useState<boolean | undefined>(
+  const [newAccountScreen, setNewAccountScreen] = React.useState<boolean>(
     false,
   );
 
-  const renderScreenChange = () => {
-    if (!newAccount) {
-      return (
-        <SignInScreen
-          {...props}
-          onSignupPress={() => {
-            props.handleSignUp && props.handleSignUp();
-            setNewAccount(true);
-          }}
-        />
-      );
-    } else {
-      return (
-        <View style={styles.screenContainer}>
-          <SignUpScreen {...props} handleSignIn={() => setNewAccount(false)} />
-        </View>
-      );
-    }
-  };
-
-  return <View style={styles.mainContainer}>{renderScreenChange()}</View>;
+  return (
+    <View style={styles.mainContainer}>
+      <KeyboardAvoidingView
+        enabled
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.keyboardAvoidingViewStyle}
+      >
+        {!newAccountScreen ? (
+          <SignInScreen
+            {...props}
+            onSignupPress={() => {
+              props.handleSignUp && props.handleSignUp();
+              setNewAccountScreen(true);
+            }}
+          />
+        ) : (
+          <SignUpScreen
+            {...props}
+            handleSignIn={() => setNewAccountScreen(false)}
+          />
+        )}
+      </KeyboardAvoidingView>
+    </View>
+  );
 };
 
 export default DarkLoginScreen;

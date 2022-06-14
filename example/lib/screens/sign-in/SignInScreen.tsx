@@ -229,25 +229,19 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
   );
 
   return (
-    <KeyboardAvoidingView
-      enabled
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.keyboardAvoidingViewStyle}
-    >
-      <SafeAreaView style={{ flex: 1 }}>
-        {renderHeaderTextContainer()}
-        {renderInputContainer()}
-        <View
-          style={{
-            position: "absolute",
-            bottom: isIPhoneNotchFamily() ? getStatusBarHeight() : 8,
-          }}
-        >
-          {renderLoginButtonsContainer()}
-          {rendersignUpQuestionButtonContainer()}
-        </View>
-      </SafeAreaView>
-    </KeyboardAvoidingView>
+    <>
+      {renderHeaderTextContainer()}
+      {renderInputContainer()}
+      <View
+        style={{
+          position: "absolute",
+          bottom: isIPhoneNotchFamily() ? getStatusBarHeight() : 8,
+        }}
+      >
+        {renderLoginButtonsContainer()}
+        {rendersignUpQuestionButtonContainer()}
+      </View>
+    </>
   );
 };
 
