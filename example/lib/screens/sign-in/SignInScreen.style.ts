@@ -100,23 +100,23 @@ export default StyleSheet.create({
   facebookButtonTextStyle: {
     color: "#FFF",
   },
-  signUpQuestionButtonContainer: {
+  bottomQuestionContainer: {
     marginTop: 8,
     width: ScreenWidth * 0.9,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
   },
-  signUpButtonStyle: {
+  bottomQuestionButton: {
     height: 40,
     justifyContent: "center",
     marginLeft: 8,
   },
-  accountQuestionTextStyle: {
+  bottomQuestionTextStyle: {
     fontSize: 14,
     color: "#fff",
   },
-  signUpQuestionButtonTextStyle: {
+  bottomQuestionButtonTextStyle: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#519bf4",

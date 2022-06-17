@@ -35,9 +35,9 @@ interface ISignInScreenProps {
   passwordPlaceholder?: string;
   forgotPasswordText?: string;
   forgotPasswordTextStyle?: TextStyle;
-  signInButtonStyle?: ViewStyle;
+  buttonStyle?: ViewStyle;
   signInButtonText?: string;
-  signInButtonTextStyle?: TextStyle;
+  buttonTextStyle?: TextStyle;
   googleButtonStyle?: ViewStyle;
   googleButtonTextStyle?: TextStyle;
   googleButtonText?: string;
@@ -47,9 +47,9 @@ interface ISignInScreenProps {
   enableGoogleLogin?: boolean;
   enableFacebookLogin?: boolean;
   accountQuestionText?: string;
-  signUpQuestionButtonText?: string;
-  accountQuestionTextStyle?: TextStyle;
-  signUpQuestionButtonTextStyle?: TextStyle;
+  signUpButtonText?: string;
+  bottomQuestionTextStyle?: TextStyle;
+  bottomQuestionButtonTextStyle?: TextStyle;
   signInQuestionText?: string;
   signInQuestionTextStyle?: TextStyle;
   enableForgotPassword?: boolean;
@@ -57,6 +57,8 @@ interface ISignInScreenProps {
   appleButtonStyle?: ViewStyle;
   appleButtonText?: string;
   appleButtonTextStyle?: TextStyle;
+
+  bottomQuestionButton?: ViewStyle;
   usernameChangeText?: (username: string) => void;
   passwordChangeText?: (password: string) => void;
   handleSignInButton?: () => void;
@@ -83,9 +85,9 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
   textInputStyle,
   forgotPasswordText = "Forgot Password?",
   forgotPasswordTextStyle,
-  signInButtonStyle,
+  buttonStyle,
   signInButtonText = "Sign In",
-  signInButtonTextStyle,
+  buttonTextStyle,
   googleButtonStyle,
   googleButtonTextStyle,
   googleButtonText = "Sign In With Google",
@@ -95,9 +97,11 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
   enableGoogleLogin = true,
   enableFacebookLogin = true,
   accountQuestionText = "Don't Have An Account ?",
-  signUpQuestionButtonText = "Sign Up",
-  accountQuestionTextStyle,
-  signUpQuestionButtonTextStyle,
+  signUpButtonText = "Sign Up",
+  bottomQuestionTextStyle,
+
+  bottomQuestionButton,
+  bottomQuestionButtonTextStyle,
   enableForgotPassword = true,
   enableAppleLogin = true,
   appleButtonStyle,
@@ -148,10 +152,10 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
         </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={[styles.signInButtonStyle, signInButtonStyle]}
+        style={[styles.signInButtonStyle, buttonStyle]}
         onPress={handleSignInButton}
       >
-        <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
+        <Text style={[styles.signInButtonTextStyle, buttonTextStyle]}>
           {signInButtonText}
         </Text>
       </TouchableOpacity>
@@ -208,21 +212,21 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
   );
 
   const rendersignUpQuestionButtonContainer = () => (
-    <View style={styles.signUpQuestionButtonContainer}>
-      <Text style={[styles.accountQuestionTextStyle, accountQuestionTextStyle]}>
+    <View style={styles.bottomQuestionContainer}>
+      <Text style={[styles.bottomQuestionTextStyle, bottomQuestionTextStyle]}>
         {accountQuestionText}
       </Text>
       <TouchableOpacity
-        style={styles.signUpButtonStyle}
+        style={[styles.bottomQuestionButton, bottomQuestionButton]}
         onPress={onSignupPress}
       >
         <Text
           style={[
-            styles.signUpQuestionButtonTextStyle,
-            signUpQuestionButtonTextStyle,
+            styles.bottomQuestionButtonTextStyle,
+            bottomQuestionButtonTextStyle,
           ]}
         >
-          {signUpQuestionButtonText}
+          {signUpButtonText}
         </Text>
       </TouchableOpacity>
     </View>

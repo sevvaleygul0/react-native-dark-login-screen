@@ -1,9 +1,5 @@
 import * as React from "react";
 import {
-  getStatusBarHeight,
-  isIPhoneNotchFamily,
-} from "@freakycoder/react-native-helpers";
-import {
   Text,
   View,
   TextInput,
@@ -26,12 +22,15 @@ interface SignUpScreenProps {
   passwordPlaceholder?: string;
   passwordTextInputStyle?: TextStyle;
   signUpButtonText?: string;
-  signUpButtonStyle?: ViewStyle;
-  signUpButtonTextStyle?: TextStyle;
-  signInQuestionTextStyle?: TextStyle;
+  buttonStyle?: ViewStyle;
+  buttonTextStyle?: TextStyle;
+  bottomQuestionTextStyle?: TextStyle;
+  bottomQuestionButton?: ViewStyle;
   signInQuestionText?: string;
-  signInButtonTextStyle?: TextStyle;
+  bottomQuestionButtonTextStyle?: TextStyle;
   signInButtonText?: string;
+  descriptionTextStyle?: TextStyle;
+  titleTextStyle?: TextStyle;
   fullNameOnChange?: (fullName: string) => void;
   emailOnChange?: (email: string) => void;
   singUpPasswordChangeText?: (password: string) => void;
@@ -44,20 +43,24 @@ const SignUpScreen = (props: SignUpScreenProps) => {
     signUpTitle = "Create New Account",
     signUpDescriptionText = "Please fill in the form to continue",
     signUpTitleTextStyle,
+    titleTextStyle,
     signUpDescriptionTextStyle,
     fullNamePlaceholderText = "Full Name",
     placeholderTextColor = "#6C6D72",
     textInputStyle,
+    bottomQuestionButton,
     emailPlaceholderText = "Email Address",
     passwordPlaceholder = "Password",
     passwordTextInputStyle,
     signUpButtonText = "Sign Up",
-    signUpButtonStyle,
-    signUpButtonTextStyle,
-    signInQuestionTextStyle,
+    buttonStyle,
+    buttonTextStyle,
+    bottomQuestionTextStyle,
     signInQuestionText = "Have An Account?",
-    signInButtonTextStyle,
+    bottomQuestionButtonTextStyle,
     signInButtonText = "Sign In",
+
+    descriptionTextStyle,
     fullNameOnChange,
     emailOnChange,
     singUpPasswordChangeText,
@@ -67,11 +70,9 @@ const SignUpScreen = (props: SignUpScreenProps) => {
 
   const renderHeaderTextContainer = () => (
     <View style={styles.headerContainer}>
-      <Text style={[styles.titleTextStyle, signUpTitleTextStyle]}>
-        {signUpTitle}
-      </Text>
+      <Text style={[styles.titleTextStyle, titleTextStyle]}>{signUpTitle}</Text>
       <View style={{ marginTop: 16 }}>
-        <Text style={[styles.descriptionTextStyle, signUpDescriptionTextStyle]}>
+        <Text style={[styles.descriptionTextStyle, descriptionTextStyle]}>
           {signUpDescriptionText}
         </Text>
       </View>
@@ -98,7 +99,7 @@ const SignUpScreen = (props: SignUpScreenProps) => {
         {...props}
         placeholder={passwordPlaceholder}
         placeholderTextColor={placeholderTextColor}
-        style={[styles.textInputStyle, passwordTextInputStyle]}
+        style={[styles.textInputStyle, textInputStyle]}
         secureTextEntry
         onChangeText={singUpPasswordChangeText}
       />
@@ -106,28 +107,31 @@ const SignUpScreen = (props: SignUpScreenProps) => {
   );
 
   const renderSignUpButton = () => (
-    <View style={styles.signUpButtonContainer}>
-      <TouchableOpacity
-        style={[styles.signUpButtonStyle, signUpButtonStyle]}
-        onPress={handleSignUpButton}
-      >
-        <Text style={[styles.signUpButtonTextStyle, signUpButtonTextStyle]}>
-          {signUpButtonText}
-        </Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      style={[styles.signUpButtonStyle, buttonStyle]}
+      onPress={handleSignUpButton}
+    >
+      <Text style={[styles.signUpButtonTextStyle, buttonTextStyle]}>
+        {signUpButtonText}
+      </Text>
+    </TouchableOpacity>
   );
 
   const renderSignInTextContainer = () => (
-    <View style={styles.signInButtonContainer}>
-      <Text style={[styles.signInQuestionTextStyle, signInQuestionTextStyle]}>
+    <View style={styles.bottomQuestionContainer}>
+      <Text style={[styles.bottomQuestionTextStyle, bottomQuestionTextStyle]}>
         {signInQuestionText}
       </Text>
       <TouchableOpacity
-        style={styles.signInButtonStyle}
+        style={[styles.bottomQuestionButton, bottomQuestionButton]}
         onPress={() => handleSignIn && handleSignIn()}
       >
-        <Text style={[styles.signInButtonTextStyle, signInButtonTextStyle]}>
+        <Text
+          style={[
+            styles.bottomQuestionButtonTextStyle,
+            bottomQuestionButtonTextStyle,
+          ]}
+        >
           {signInButtonText}
         </Text>
       </TouchableOpacity>
@@ -136,19 +140,10 @@ const SignUpScreen = (props: SignUpScreenProps) => {
 
   return (
     <>
-      <SafeAreaView style={styles.mainContainer}>
-        {renderHeaderTextContainer()}
-        {renderTextInputContainer()}
-        <View
-          style={{
-            position: "absolute",
-            bottom: isIPhoneNotchFamily() ? getStatusBarHeight() : 8,
-          }}
-        >
-          {renderSignUpButton()}
-          {renderSignInTextContainer()}
-        </View>
-      </SafeAreaView>
+      {renderHeaderTextContainer()}
+      {renderTextInputContainer()}
+      {renderSignUpButton()}
+      {renderSignInTextContainer()}
     </>
   );
 };
