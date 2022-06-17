@@ -6,21 +6,17 @@ import {
   TextStyle,
   TouchableOpacity,
   ViewStyle,
-  SafeAreaView,
 } from "react-native";
 import styles from "./SignUpScreen.style";
 
 interface SignUpScreenProps {
   signUpTitle?: string;
   signUpDescriptionText?: string;
-  signUpTitleTextStyle?: TextStyle;
-  signUpDescriptionTextStyle?: TextStyle;
   fullNamePlaceholderText?: string;
   placeholderTextColor?: string;
   textInputStyle?: TextStyle;
   emailPlaceholderText?: string;
   passwordPlaceholder?: string;
-  passwordTextInputStyle?: TextStyle;
   signUpButtonText?: string;
   buttonStyle?: ViewStyle;
   buttonTextStyle?: TextStyle;
@@ -42,16 +38,13 @@ const SignUpScreen = (props: SignUpScreenProps) => {
   const {
     signUpTitle = "Create New Account",
     signUpDescriptionText = "Please fill in the form to continue",
-    signUpTitleTextStyle,
     titleTextStyle,
-    signUpDescriptionTextStyle,
     fullNamePlaceholderText = "Full Name",
     placeholderTextColor = "#6C6D72",
     textInputStyle,
     bottomQuestionButton,
     emailPlaceholderText = "Email Address",
     passwordPlaceholder = "Password",
-    passwordTextInputStyle,
     signUpButtonText = "Sign Up",
     buttonStyle,
     buttonTextStyle,
@@ -59,7 +52,6 @@ const SignUpScreen = (props: SignUpScreenProps) => {
     signInQuestionText = "Have An Account?",
     bottomQuestionButtonTextStyle,
     signInButtonText = "Sign In",
-
     descriptionTextStyle,
     fullNameOnChange,
     emailOnChange,

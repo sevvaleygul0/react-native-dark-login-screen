@@ -20,12 +20,8 @@ import {
  * ? Local Imports
  */
 import styles from "./SignInScreen.style";
-import { Platform } from "react-native";
-
-type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
 
 interface ISignInScreenProps {
-  style?: CustomStyleProp;
   textInputStyle?: TextStyle;
   titleText?: string;
   titleTextStyle?: TextStyle;
@@ -50,14 +46,10 @@ interface ISignInScreenProps {
   signUpButtonText?: string;
   bottomQuestionTextStyle?: TextStyle;
   bottomQuestionButtonTextStyle?: TextStyle;
-  signInQuestionText?: string;
-  signInQuestionTextStyle?: TextStyle;
-  enableForgotPassword?: boolean;
   enableAppleLogin?: boolean;
   appleButtonStyle?: ViewStyle;
   appleButtonText?: string;
   appleButtonTextStyle?: TextStyle;
-
   bottomQuestionButton?: ViewStyle;
   usernameChangeText?: (username: string) => void;
   passwordChangeText?: (password: string) => void;
@@ -75,7 +67,6 @@ interface ISignInScreenProps {
 }
 
 const SignInScreen: React.FC<ISignInScreenProps> = ({
-  style,
   titleText = "Welcome Back!",
   titleTextStyle,
   descriptionText = "Please sign in to your account",
@@ -99,10 +90,8 @@ const SignInScreen: React.FC<ISignInScreenProps> = ({
   accountQuestionText = "Don't Have An Account ?",
   signUpButtonText = "Sign Up",
   bottomQuestionTextStyle,
-
   bottomQuestionButton,
   bottomQuestionButtonTextStyle,
-  enableForgotPassword = true,
   enableAppleLogin = true,
   appleButtonStyle,
   appleButtonText = "Sign In With Apple",

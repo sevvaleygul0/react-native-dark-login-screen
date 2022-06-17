@@ -11,20 +11,18 @@ import SignUpScreen from "./screens/sign-up/SignUpScreen";
 import SignInScreen from "./screens/sign-in/SignInScreen";
 
 interface DarkLoginScreenProps {
+  textInputStyle?: TextStyle;
   titleText?: string;
   titleTextStyle?: TextStyle;
   descriptionText?: string;
   descriptionTextStyle?: TextStyle;
   usernamePlaceholder?: string;
-  textInputStyle?: TextStyle;
-  placeholderTextColor?: string;
-  passwordTextInputStyle?: TextStyle;
   passwordPlaceholder?: string;
   forgotPasswordText?: string;
   forgotPasswordTextStyle?: TextStyle;
-  signInButtonStyle?: ViewStyle;
+  buttonStyle?: ViewStyle;
   signInButtonText?: string;
-  signInButtonTextStyle?: TextStyle;
+  buttonTextStyle?: TextStyle;
   googleButtonStyle?: ViewStyle;
   googleButtonTextStyle?: TextStyle;
   googleButtonText?: string;
@@ -33,17 +31,22 @@ interface DarkLoginScreenProps {
   facebookButtonText?: string;
   enableGoogleLogin?: boolean;
   enableFacebookLogin?: boolean;
-  signUpQuestionText?: string;
-  signUpButtonText?: string;
-  signUpTextStyle?: TextStyle;
-  signUpButtonTextStyle?: TextStyle;
-  signInQuestionText?: string;
-  signInQuestionTextStyle?: TextStyle;
-  enableForgotPassword?: boolean;
+  accountQuestionText?: string;
   enableAppleLogin?: boolean;
   appleButtonStyle?: ViewStyle;
   appleButtonText?: string;
   appleButtonTextStyle?: TextStyle;
+  signUpTitle?: string;
+  signUpDescriptionText?: string;
+  fullNamePlaceholderText?: string;
+  placeholderTextColor?: string;
+  emailPlaceholderText?: string;
+  signUpButtonText?: string;
+  bottomQuestionTextStyle?: TextStyle;
+  bottomQuestionButton?: ViewStyle;
+  signInQuestionText?: string;
+  bottomQuestionButtonTextStyle?: TextStyle;
+  handleSignIn?: () => void;
   usernameChangeText?: (username: string) => void;
   passwordChangeText?: (password: string) => void;
   handleSignInButton?: () => void;
@@ -56,6 +59,7 @@ interface DarkLoginScreenProps {
   handleSignUp?: () => void;
   handleSignUpButton?: () => void;
   handleAppleLogIn?: () => void;
+  onSignupPress: () => void;
 }
 
 const DarkLoginScreen = (props: DarkLoginScreenProps) => {
