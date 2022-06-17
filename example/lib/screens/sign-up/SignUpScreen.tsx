@@ -139,16 +139,16 @@ const SignUpScreen = (props: SignUpScreenProps) => {
       <SafeAreaView style={styles.mainContainer}>
         {renderHeaderTextContainer()}
         {renderTextInputContainer()}
+        <View
+          style={{
+            position: "absolute",
+            bottom: isIPhoneNotchFamily() ? getStatusBarHeight() : 8,
+          }}
+        >
+          {renderSignUpButton()}
+          {renderSignInTextContainer()}
+        </View>
       </SafeAreaView>
-      <View
-        style={{
-          position: "absolute",
-          bottom: isIPhoneNotchFamily() ? getStatusBarHeight() : 8,
-        }}
-      >
-        {renderSignUpButton()}
-        {renderSignInTextContainer()}
-      </View>
     </>
   );
 };
