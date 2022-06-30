@@ -38,7 +38,6 @@ export default StyleSheet.create({
   },
   textInputContainer: {
     marginTop: 24,
-    justifyContent: "center",
     width: ScreenWidth * 0.9,
   },
   textInputStyle: {

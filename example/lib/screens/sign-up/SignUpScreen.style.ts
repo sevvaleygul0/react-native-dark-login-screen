@@ -1,9 +1,8 @@
 import {
   getStatusBarHeight,
-  isAndroid,
   isIPhoneNotchFamily,
 } from "@freakycoder/react-native-helpers";
-import { ViewStyle, TextStyle, StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get("window");
 
 export default StyleSheet.create({
@@ -13,21 +12,20 @@ export default StyleSheet.create({
     backgroundColor: "#181A1F",
   },
   headerContainer: {
-    marginTop: 24,
+    marginTop: getStatusBarHeight() ? 32 : 24,
     alignItems: "center",
     justifyContent: "center",
   },
   titleTextStyle: {
     fontSize: 24,
     color: "#fff",
-    fontWeight: "600",
   },
   descriptionTextStyle: {
     fontSize: 15,
     color: "#696A6F",
   },
   textInputContainer: {
-    marginTop: 32,
+    marginTop: 24,
     width: ScreenWidth * 0.9,
   },
   textInputStyle: {
